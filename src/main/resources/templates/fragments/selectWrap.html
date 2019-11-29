@@ -1,0 +1,53 @@
+
+
+
+	<div class="select-wrap" th:fragment="selectWrap">
+	<form th:action="@{/selectSearch}" method="post" class="form-signin">
+				<div class="styled-select">
+					<select name="readingLevelList" >
+					<option value="-1">Reading Level</option>
+					<option th:each="dropDownItem : ${readingLevels}"
+                             th:value="${dropDownItem.readingLevelId}"
+                             th:text="${dropDownItem.readingLevel}"/>
+						
+					</select>
+				</div>
+				<div class="styled-select">
+					<select name="categoriesList">
+					<option  value="-1">Categories</option>
+						<option th:each="dropDownItem : ${categories}"
+                             th:value="${dropDownItem.categoryId}"
+                             th:text="${dropDownItem.categoryName}"/>
+					</select>
+				</div>
+				<div class="styled-select">
+					<select name="languageList">
+					<option  value="-1">Languages</option>
+						<option th:each="dropDownItem : ${languages}"
+                             th:value="${dropDownItem.languageID}"
+                             th:text="${dropDownItem.language}"/>
+					</select>
+				</div>
+				<div class="styled-select">
+					<select name="publishersList">
+					<option value="-1">Publishers</option>
+						<option th:each="dropDownItem : ${publishers}"
+                             th:value="${dropDownItem.publisherId}"
+                             th:text="${dropDownItem.publisherName}"/>
+					</select>
+				</div>
+				<button type="submit" class="selectButton" style="border:none;"></button>
+				</form>
+			</div>
+			
+			 <!-- newly added - mobile tabs -->
+  <div class="mobile-tabs" th:fragment="selectWrap-mobile">
+    <div class="m-tab1"><a th:href="@{/quickReadingLevelSearch/1}">early readers</a></div>
+    <div class="m-tab"><a th:href="@{/quickReadingLevelSearch/2}">young readers</a></div>
+    <div class="m-tab"><a th:href="@{/quickReadingLevelSearch/3}">fluent readers</a></div>
+  </div>
+  <!-- newly added - mobile tabs ends -->
+			
+
+
+

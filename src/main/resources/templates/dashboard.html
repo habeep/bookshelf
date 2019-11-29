@@ -1,0 +1,399 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/dashboardheadpart :: dashboardheadPart}"></head>
+<body>
+	<div class="main-wrapper">
+		<div class="wrapper">
+			<div th:replace="~{fragments/headerWrap :: headerWrap}" />
+			<div th:replace="~{fragments/headerWrap :: headerWrap-mobile}" />
+			<div th:replace="~{fragments/selectWrap :: selectWrap}" />
+		</div>
+		<div th:replace="~{fragments/selectWrap :: selectWrap-mobile}" />
+		<div class="l-wrapper">
+			<div class="l-details-wrap">
+				<div th:replace="~{fragments/leftNav :: leftNav}"></div>
+				<!-- isUserPaid = <label th:utext="${isUserPaid}"></label>,,,isUserSubscriptionRequested = <label th:utext="${isUserSubscriptionRequested}"></label> -->
+				<div class="l-right-detials-wrap"
+					th:if="${isUserPaid != 0 AND isUserSubscriptionRequested != 0}">
+					<div class="l-right-title">You are nearly there !</div>
+					<div class="l-right-box-wrap">
+						<div class="offer-item" th:each="uscObj:${usc}">
+							<div class="b-history-book-details">
+								<label th:utext="${uscObj[0]}"></label>, <label
+									th:utext="${uscObj[1]}"></label> books per delivery
+							</div>
+							<div class="b-history-book-status">
+								you pay <label th:utext="${uscObj[3]}"></label> for this plan
+							</div>
+						</div>
+						<div class="cart-title">
+							Pay now and become a member.
+							<p th:if="${paybyCashFlag == 1 }">If you are looking to
+								connect with our sales team, Please call our support team @
+								8056073602 now !</p>
+						</div>
+						<div class="space">&nbsp;</div>
+
+						<div class="l-btn" th:each="uscObj:${usc}"
+							th:if="${paybyCashFlag == 1 }">
+
+
+							<form autocomplete="off" action="#" th:action="@{/onlinepayment}"
+								method="post" role="form">
+								<input type="hidden" name="userSubcId" id="userSubcId"
+									th:value="${uscObj[7]}" /> <input type="hidden" name="subcId"
+									id="subcId" th:value="${uscObj[6]}" /> <input type="hidden"
+									name="payOption" id="payOption" value="0" /> <input
+									type="submit" value="Pay online" class="sbutton" />
+							</form>
+						</div>
+
+						<div class="l-btn" th:each="uscObj:${usc}"
+							th:if="${paybyCashFlag == 0 }">
+
+
+							<a th:href="${uscObj[4]}" class="button">Pay Now </a>
+
+						</div>
+
+					</div>
+				</div>
+
+				<div class="l-right-detials-wrap" th:if="${isUserPaid == 0}">
+					<div class="l-right-title">
+
+
+						<label th:utext="${userName}"></label>'s bookshelf
+					</div>
+					<div>
+						<div class="l-right-box-wrap" th:if=${!deliveryBooks.empty}>
+							<div class="icons-cart">
+								<div class="cart-title">
+									Your Delivery Request <span th:text="${deliveryBookssize}" />
+									books
+								</div>
+								   <div class="dummy dummy-menu dummy-menu-icons"  >
+									<ul>
+										<li><a class="tooltip" href="#"><i
+												class="fa fa-fw fa-bicycle"></i><span
+												class="tooltip-content">You have <span
+													th:text="${numberofdeliveriesLeft}" /> more deliveries
+													left
+											</span></a></li>
+									</ul>
+								</div>  
+							</div>
+
+							<div class="cart-items-wrap2">
+
+
+								<div class="cart-item-wrap2" th:each="book : ${deliveryBooks}">
+									<div class="cart-thumbnail">
+										<a th:href="@{/bookdetails/}+${book[0]}"><img
+											th:src="@{'/bookimages/'+${book[6]}+'.jpg'}" /></a>
+									</div>
+									<div class="cart-book-title">
+										<div class="c-title">
+											<a th:href="@{/bookdetails/}+${book[0]}"><span
+												th:text="${book[1]}"> Title </span></a>
+										</div>
+										<div class="cart-book-age">
+											<span th:text="${book[4]}"> Age </span>
+										</div>
+									</div>
+									<div class="cart-book-details">
+										<div class="c-book-author">
+											written by <span th:text="${book[3]}"> Title </span>
+										</div>
+										<div class="c-book-publisher">
+											<span th:text="${book[2]}"> Publisher </span>
+										</div>
+									</div>
+
+
+
+									<!-- <div class="cart-book-delete"> -->
+									<div class="cart-book-delete2">
+										Delivery In Progress
+										<!-- <i class="fas fa-undo" style="padding-left: 5px;"></i> -->
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="l-right-box-wrap" th:if=${!books.empty}>
+							<div class="icons-cart">
+								<div class="cart-title">
+									your bag has <span th:text="${notreturnBooksSize}" /> books
+								</div>
+								  <div class="dummy dummy-menu dummy-menu-icons">
+									<ul>
+										<li><a class="tooltip" href="#"><i
+												class="fa fa-fw fa-bicycle"></i><span
+												class="tooltip-content">You have <span
+													th:text="${numberofdeliveriesLeft}" /> more deliveries
+													left
+											</span></a></li>
+									</ul>
+								</div> 
+							</div>
+
+							<div class="cart-items-wrap2">
+
+
+								<div class="cart-item-wrap2" th:each="book : ${books}">
+									<div class="cart-thumbnail">
+										<a th:href="@{/bookdetails/}+${book[0]}"><img
+											th:src="@{'/bookimages/'+${book[6]}+'.jpg'}" /></a>
+									</div>
+									<div class="cart-book-title">
+										<div class="c-title">
+											<a th:href="@{/bookdetails/}+${book[0]}"><span
+												th:text="${book[1]}"> Title </span></a>
+										</div>
+										<div class="cart-book-age">
+											<span th:text="${book[4]}"> Age </span>
+										</div>
+									</div>
+									<div class="cart-book-details">
+										<div class="c-book-author">
+											written by <span th:text="${book[3]}"> Title </span>
+										</div>
+										<div class="c-book-publisher">
+											<span th:text="${book[2]}"> Publisher </span>
+										</div>
+									</div>
+
+
+
+									<div class="cart-book-delete">
+										<a th:href="@{'/user/return/books/' + ${book[0]}}"> Return
+											this book<i class="fas fa-undo" style="padding-left: 5px;"></i>
+										</a>
+									</div>
+
+
+									<div th:id="'ratingDiv_'+${book[0]}" class="rating"
+										th:if="${__${'isExist_'+book[0]}__ == null}">
+										<span>Did you like this book ? Rate it !</span> <i
+											class="fas fa-star"
+											th:onclick="'javascript:saveRating(\'' + ${book[0]} + '\',\'' + ${userId}+'\',1);'"></i>
+										<i class="fas fa-star"
+											th:onclick="'javascript:saveRating(\'' + ${book[0]} + '\',\'' + ${userId}+'\',2);'"></i>
+										<i class="fas fa-star"
+											th:onclick="'javascript:saveRating(\'' + ${book[0]} + '\',\'' + ${userId}+'\',3);'"></i>
+										<i class="fas fa-star"
+											th:onclick="'javascript:saveRating(\'' + ${book[0]} + '\',\'' + ${userId}+'\',4);'"></i>
+										<i class="fas fa-star"
+											th:onclick="'javascript:saveRating(\'' + ${book[0]} + '\',\'' + ${userId}+'\',5);'"></i>
+									</div>
+
+									<div id="ratingDivs" class="rating"
+										th:if="${__${'isExist_'+book[0]}__ != null}">
+										<i
+											th:each="i : ${#numbers.sequence( 1, __${'myrating_'+book[0]}__ )}">
+											<i class="fas fa-star" style="color: #e34630;"></i>
+										</i>
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="l-right-box-wrap"
+							th:if="${books.empty AND isUserPaid == 0}">
+							<div class="l-right-box-wrap-empty" th:if=${deliveryBooks.empty}>
+								<!-- <div class="l-right-box-wrap" th:if=${returnInProgressBooks.empty}>
+						<div class="l-right-box-wrap" th:if=${returnConfirmBooks.empty}> -->
+								<div class="icons-cart">
+									<div class="cart-title">your bag has 0 books</div>
+									  <div class="dummy dummy-menu dummy-menu-icons">
+										<ul>
+											<li><a class="tooltip" href="#"><i
+													class="fa fa-fw fa-bicycle"></i><span
+													class="tooltip-content">You have <span
+														th:text="${numberofdeliveriesLeft}" /> more deliveries
+														left
+												</span></a></li>
+										</ul>
+									</div> 
+								</div>
+
+								<div class="sorry">Oops ! Looks like your bag is empty !
+									Browse through our well curated collection of books and start
+									reading !</div>
+								<!-- 	<div class="l-btn"> -->
+
+								<!-- <a th:href="@{/}" class="button">browse books</a> -->
+
+								<!-- </div> -->
+							</div>
+						</div>
+
+						<!-- <div class="dummy dummy-menu dummy-menu-icons" th:if="${isUserPaid == 0}">
+							<ul>
+								<li><a class="tooltip" href="#"><i class="fas fa-bell"></i><span
+										class="tooltip-content">Your books will be delivered on
+											Mon, 22.07.19 between 12 pm - 3 pm</span></a></li>
+								<li><a class="tooltip" href="#"><i
+										class="fa fa-fw fa-bicycle"></i><span class="tooltip-content">You
+											have  <span th:text="${numberofdeliveriesLeft}" />  more deliveries left for this month</span></a></li>
+							</ul>
+						</div> -->
+						<!-- </div>
+					</div> -->
+						<!-- <div class="l-right-box-wrap" th:if="${!returnInProgressBooks.empty}">
+							<div class="cart-title">
+								Your Return In Progress <span
+									th:text="${noOfreturnInProgressBooks}" /> books
+							</div>
+							<div class="cart-items-wrap">
+								<div class="cart-item-wrap2"
+									th:each="book : ${returnInProgressBooks}">
+									<div class="cart-thumbnail">
+										 <a th:href="@{/bookdetails/}+${book[0]}"><img
+											th:src="@{'/bookimages/'+${book[6]}+'.jpg'}" /></a>
+									</div>
+									<div class="cart-book-title">
+										<div class="c-title">
+											<a th:href="@{/bookdetails/}+${book[0]}"><span
+												th:text="${book[1]}"> Title </span></a>
+										</div>
+										<div class="cart-book-age">
+											<span th:text="${book[4]}"> Age </span>
+										</div>
+									</div>
+									<div class="cart-book-details">
+										<div class="c-book-author">
+											written by <span th:text="${book[3]}"> Title </span>
+										</div>
+										<div class="c-book-publisher">
+											<span th:text="${book[3]}"> Publisher </span>
+										</div>
+									</div>
+
+									<div class="cart-book-delete">
+										Return In Progress<i class="fas fa-undo"
+											style="padding-left: 5px;"></i>
+									</div>
+
+
+
+									<div id="ratingDiv" class="rating"
+										th:if="${__${'isExist_'+book[0]}__ == null}">
+										<span>Did you like this book ? Rate it !</span> <i
+											class="fas fa-star"
+											th:onclick="'javascript:saveRating(\'' + ${book[0]} + '\',\'' + ${userId}+'\',1);'"></i>
+										<i class="fas fa-star"
+											th:onclick="'javascript:saveRating(\'' + ${book[0]} + '\',\'' + ${userId}+'\',2);'"></i>
+										<i class="fas fa-star"
+											th:onclick="'javascript:saveRating(\'' + ${book[0]} + '\',\'' + ${userId}+'\',3);'"></i>
+										<i class="fas fa-star"
+											th:onclick="'javascript:saveRating(\'' + ${book[0]} + '\',\'' + ${userId}+'\',4);'"></i>
+										<i class="fas fa-star"
+											th:onclick="'javascript:saveRating(\'' + ${book[0]} + '\',\'' + ${userId}+'\',5);'"></i>
+									</div>
+									<div id="ratingDiv" class="rating"
+										th:if="${__${'isExist_'+book[0]}__ != null}">
+										<i
+											th:each="i : ${#numbers.sequence( 1, __${'myrating_'+book[0]}__ )}">
+											<i class="fas fa-star" style="color: #e34630;"></i>
+										</i>
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+						 <div class="l-right-box-wrap" th:if="${!returnConfirmBooks.empty}"> 
+							<div class="cart-title">
+								Your Return Confirm <span th:text="${noOfreturnconfirmBooks}" />
+								books
+							</div>
+							<div class="cart-items-wrap">
+								<div class="cart-item-wrap2"
+									th:each="book : ${returnConfirmBooks}">
+									<div class="cart-thumbnail">
+										 <a th:href="@{/bookdetails/}+${book[0]}"><img
+											th:src="@{'/bookimages/'+${book[6]}+'.jpg'}" /></a>
+									</div>
+									<div class="cart-book-title">
+										<div class="c-title">
+											<a th:href="@{/bookdetails/}+${book[0]}"><span
+												th:text="${book[1]}"> Title </span></a>
+										</div>
+										<div class="cart-book-age">
+											<span th:text="${book[4]}"> Age </span>
+										</div>
+									</div>
+									<div class="cart-book-details">
+										<div class="c-book-author">
+											written by <span th:text="${book[3]}"> Title </span>
+										</div>
+										<div class="c-book-publisher">
+											<span th:text="${book[3]}"> Publisher </span>
+										</div>
+									</div>
+
+
+									<div class="cart-book-delete">
+										Return Requested<i class="fas fa-undo"
+											style="padding-left: 5px;"></i>
+									</div>
+
+
+									<div id="ratingDiv" class="rating"
+										th:if="${__${'isExist_'+book[0]}__ == null}">
+										<span>Did you like this book ? Rate it !</span> <i
+											class="fas fa-star"
+											th:onclick="'javascript:saveRating(\'' + ${book[0]} + '\',\'' + ${userId}+'\',1);'"></i>
+										<i class="fas fa-star"
+											th:onclick="'javascript:saveRating(\'' + ${book[0]} + '\',\'' + ${userId}+'\',2);'"></i>
+										<i class="fas fa-star"
+											th:onclick="'javascript:saveRating(\'' + ${book[0]} + '\',\'' + ${userId}+'\',3);'"></i>
+										<i class="fas fa-star"
+											th:onclick="'javascript:saveRating(\'' + ${book[0]} + '\',\'' + ${userId}+'\',4);'"></i>
+										<i class="fas fa-star"
+											th:onclick="'javascript:saveRating(\'' + ${book[0]} + '\',\'' + ${userId}+'\',5);'"></i>
+									</div>
+									 <div id="ratingDiv" class="rating"
+										th:if="${__${'isExist_'+book[0]}__ != null}">
+										<i
+											th:each="i : ${#numbers.sequence( 1, __${'myrating_'+book[0]}__ )}">
+											<i class="fas fa-star" style="color: #e34630;"></i>
+										</i>
+
+									</div> 
+
+								</div>
+
+
+
+							</div>
+					</div>  -->
+
+						<div class="space">&nbsp;</div>
+
+						<div class="l-btn3">
+
+							<a th:href="@{/quickSearch}" class="button">rent books</a>
+
+						</div>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:replace="~{fragments/footer :: testimonialFragment}"></div>
+	<div th:replace="~{fragments/footer :: footer}"></div>
+	<div th:replace="~{fragments/footer :: footer-mobile}"></div>
+
+	</div>
+
+</body>
+</html>

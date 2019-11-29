@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/cartheadpart :: cartheadPart}"></head>
+<body>
+	<div class="main-wrapper">
+		<div class="wrapper">
+			<div th:replace="~{fragments/headerWrap :: headerWrap}" />
+			<div th:replace="~{fragments/headerWrap :: headerWrap-mobile}" />
+			<div th:replace="~{fragments/selectWrap :: selectWrap}" />
+		</div>
+		<div th:replace="~{fragments/selectWrap :: selectWrap-mobile}" />
+
+		<span th:text="${msg}" />
+		<div class="c-wrapper">
+			<div class="sorry2" th:if="${!deletedbooksfromcart.empty}">
+				<label>Sorry some of your added books has been rented by
+					someone and find the book details below. </label>
+				<div th:each="deletedbookfromcart : ${deletedbooksfromcart}">
+					<span th:utext="${deletedbookfromcart}" />
+				</div>
+			</div>
+			<!-- <div class="text-msg">
+				<center>
+					<h2>
+						<span th:utext="${addToCartStatus}"></span>
+					</h2>
+				</center>
+			</div> -->
+			<div class="cart-alert" th:if="${addToCartStatus != null}">
+				<span th:utext="${addToCartStatus}" />
+			</div>
+
+
+			<form action="#" th:action="@{/user/checkout}" method="post">
+
+				<br />
+
+				<div class="cart-title">
+					<div th:if="${!returnbooks.empty}">
+						You Are Returning <span th:text="${noOfBooksReturn}"> no of
+							books</span> books
+					</div>
+				</div>
+
+				<div class="cart-items-wrap" th:if="${!returnbooks.empty}">
+					<div class="cart-item-wrap" th:each="book : ${returnbooks}">
+						<div class="cart-thumbnail">
+							<a th:href="@{/bookdetails/}+${book[0]}"><img
+								th:src="@{'/bookimages/'+${book[6]}+'.jpg'}" /></a>
+						</div>
+						<div class="cart-book-title">
+							<div class="c-title">
+								<a th:href="@{/bookdetails/}+${book[0]}"><span
+									th:text="${book[1]}"> Title </span></a>
+							</div>
+							<div class="cart-book-age">
+								<span th:text="${book[4]}"> Age </span>
+							</div>
+						</div>
+						<div class="cart-book-details">
+							<div class="c-book-author">
+								written by <span th:text="${book[3]}"> Title </span>
+							</div>
+							<div class="c-book-publisher">
+								<span th:text="${book[2]}"> Publisher </span>
+							</div>
+						</div>
+						<div class="cart-book-language">
+							<div class="c-book-lang">
+								<span th:text="${book[5]}"> Language </span>
+							</div>
+							<div class="c-book-pages" ><span th:text="${book[11]}"> 22 pages </span> pages</div>
+						</div>
+						<div class="cart-book-delete">
+							Returning<i class="fas fa-undo" style="padding-left: 5px;"></i> </a>
+						</div>
+						<span th:utext="${message}"></span>
+						<!-- <div class="cart-book-delete">
+							<a th:href="@{'/user/movetowishlist/books/' + ${book[0]}+ '/1'}">Move
+								to Wishlist<i class="fas fa-times" style="padding-left: 5px;"></i>
+							</a>
+						</div> -->
+					</div>
+				</div>
+
+				<div class="cart-title">
+					<div th:if="${!books.empty}">
+						You Are Renting <span th:text="${noOfBooksDelivery}"> no of
+							books</span> books
+					</div>
+				</div>
+
+
+				<div class="cart-items-wrap" th:if="${!books.empty}">
+					<div class="cart-item-wrap" th:each="book : ${books}">
+						<!-- <div class="cart-item-wrap"> -->
+						<div class="cart-thumbnail">
+							<a th:href="@{/bookdetails/}+${book[0]}"><img
+								th:src="@{'/bookimages/'+${book[6]}+'.jpg'}" /></a>
+						</div>
+						<div class="cart-book-title">
+							<div class="c-title">
+								<a th:href="@{/bookdetails/}+${book[0]}"><span
+									th:text="${book[1]}"> Title </span></a>
+							</div>
+							<div class="cart-book-age">
+								<span th:text="${book[4]}"> Age </span>
+							</div>
+						</div>
+						<div class="cart-book-details">
+							<div class="c-book-author">
+								written by <span th:text="${book[3]}"> Title </span>
+							</div>
+							<div class="c-book-publisher">
+								<span th:text="${book[2]}"> Publisher </span>
+							</div>
+						</div>
+						<div class="cart-book-language">
+							<div class="c-book-lang">
+								<span th:text="${book[5]}"> Language </span>
+							</div>
+							<div class="c-book-pages"><span th:text="${book[11]}"> 22 pages </span> pages </div>
+						</div>
+						<div class="cart-book-delete">
+							<a th:href="@{'/user/delete/books/' + ${book[0]} + '/0'}">Delete
+								this book<i class="fas fa-times" style="padding-left: 5px;"></i>
+							</a>
+						</div>
+						<span th:utext="${message}"></span>
+						<!-- <div class="cart-book-delete">
+							<a th:href="@{'/user/movetowishlist/books/' + ${book[0]}+ '/0'}">Move
+								to Wishlist<i class="fas fa-times" style="padding-left: 5px;"></i>
+							</a>
+						</div> -->
+					</div>
+				</div>
+				<div th:if=${returnbooks.empty}>
+					<div th:if=${books.empty}>
+						<center>
+							<div class="no-result-img">
+								<img th:src="@{/images/bag-empty.png}" />
+							</div>
+							<div class="no-result-h">Your bag is empty !</div>
+							<div>
+								<a class="sbutton" th:href="@{/quickSearch}">ADD BOOKS</a>
+							</div>
+						</center>
+
+					</div>
+				</div>
+				<div class="c-links"
+					th:if="${noOfBooksDelivery > 0 OR noOfBooksReturn > 0}">
+					<div class="c-go-back-button">
+						<a th:href="@{/quickSearch}">Add More Books</a>
+					</div>
+					<div class="c-checkout-button"
+						th:if="${noOfBooksDelivery > 0 OR noOfBooksReturn > 0}">
+
+						<a th:onclick="javascript:showDeliverySlot();">proceed to
+							checkout</a>
+					</div>
+				</div>
+				<!-- </div> -->
+				<!-- </div> -->
+
+				<div class="space">&nbsp;</div>
+
+				<div class="cart-title" th:if="${!deliverySlots.empty}"
+					id="deliverySlotHeadDiv" style="display: none;">choose your
+					preferred time for delivery</div>
+				<div class="testimonial-name" th:if="${deliverySlots.empty}"
+					id="deliverySlotHeadDiv" style="display: none;">
+					<h3>
+						<center>All delivery slots are full or Unavailable at the
+							moment</center>
+					</h3>
+				</div>
+
+				<div class="cart-items-wrap" id="deliverySlotDiv"
+					style="display: none;">
+
+					<div class="delivery-time"
+						th:each="deliverySlot : ${deliverySlots} ">
+						<div class="radio-date">
+							<label> <input type="radio" class="option-input radio"
+								name="deliverySlotId" checked th:value="${deliverySlot.slotID}" />
+								<span
+								th:text="${#dates.format(deliverySlot.dateOfdelivery, 'dd/MM/yyyy')}" />
+							</label>
+						</div>
+						<div class="radio-time">
+							<span th:text="${deliverySlot.deliveryTimeFrom}" />:00 hrs - <span
+								th:text="${deliverySlot.deliveryTimeTill}" />:00 hrs
+						</div>
+					</div>
+
+				</div>
+				<div class="c-links" th:if="${!deliverySlots.empty}"
+					id="confirmDeliveryDiv" style="display: none;">
+					<input type="submit" value="Confirm delivery"
+						class="c-checkout-button" />
+					<!--  <div class="c-checkout-button">confirm delivery</div> -->
+				</div>
+			</form>
+		</div>
+		<div th:replace="~{fragments/footer :: testimonialFragment}"></div>
+		<div th:replace="~{fragments/footer :: footer}"></div>
+		<div th:replace="~{fragments/footer :: footer-mobile}"></div>
+
+	</div>
+
+</body>
+</html>

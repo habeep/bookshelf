@@ -1,0 +1,205 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+/* CSS Document */
+
+/* bookshelf-library */
+
+/*the container must be positioned relative:*/
+.custom-select {
+  position: relative;
+  font-family: Arial;
+  width:48%;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: #e34630;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 27px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #666 transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #e34630 transparent;
+  top: 19px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #000000;
+  font-weight:bold;
+  font-family: 'Varela Round', sans-serif;
+  font-size:1em;
+  padding: 18px 7px 18px 15px;
+  border: 1px solid #c9c9c9;
+  border-bottom:3px solid #c9c9c9;
+  background-color:#ffffff;
+  cursor: pointer;
+  user-select: none;
+}
+
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color:#e34630;
+  color:#ffffff;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover,.select-items div:active, .same-as-selected {
+  background-color:#e34630;
+  color:#ffffff;
+  font-weight:bold;
+}
+.price-wrap-s{
+	position:relative;
+	float:left;
+	width:95%;
+	display:flex;
+	    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+	justify-content: space-around;
+	align-content: flex-start;
+	margin-top:95px;
+	margin-bottom:55px;
+}
+@media only screen and ( min-width: 0px ) and ( max-width: 620px ){
+	.price-wrap-s{
+	position:relative;
+	float:left;
+	width:98%;
+	display:flex;
+	    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+	flex-wrap: wrap;
+	margin-top:55px;
+	margin-bottom:35px;
+}
+.custom-select {
+  position: relative;
+  font-family: Arial;
+  width:98%;
+  margin-right:35px;
+  margin-bottom:35px;
+}
+.select-items div,.select-selected {
+  color: #000000;
+  font-weight:bold;
+  font-family: 'Varela Round', sans-serif;
+  font-size:16px;
+  padding: 16px 19px;
+  border: 1px solid #c9c9c9;
+  border-bottom:3px solid #c9c9c9;
+  background-color:#ffffff;
+  cursor: pointer;
+  user-select: none;
+}
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 25px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #666 transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #e34630 transparent;
+  top: 19px;
+}
+
+.select-items div:hover,.select-items div:active, .same-as-selected {
+  background-color:#e34630;
+  color:#ffffff;
+  font-weight:bold;
+}
+}
+@media only screen and ( min-width: 1024px ) and ( max-width: 3260px ){
+	.price-wrap-s{
+	position:relative;
+	float:left;
+	width:90%;
+	display:flex;
+	    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-content: flex-start;
+	margin-top:55px;
+	margin-bottom:35px;
+}
+.custom-select {
+  position: relative;
+  font-family: Arial;
+  width:40%;
+  margin-right:35px;
+  margin-bottom:35px;
+}
+.select-items div,.select-selected {
+  color: #000000;
+  font-weight:bold;
+  font-family: 'Varela Round', sans-serif;
+  font-size:1.3em;
+  padding: 16px 19px;
+  border: 1px solid #c9c9c9;
+  border-bottom:3px solid #c9c9c9;
+  background-color:#ffffff;
+  cursor: pointer;
+  user-select: none;
+}
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 25px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #666 transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #e34630 transparent;
+  top: 19px;
+}
+.select-items div:hover,.select-items div:active, .same-as-selected {
+  background-color:#e34630;
+  color:#ffffff;
+  font-weight:bold;
+}
+}

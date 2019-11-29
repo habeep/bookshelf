@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/headpart_1 :: headPart_1}"></head>
+<body>
+	<div class="main-wrapper">
+		<div class="wrapper">
+			<div th:replace="~{fragments/headerWrap :: headerWrap}" />
+			<div th:replace="~{fragments/headerWrap :: headerWrap-mobile}" />
+			<div th:replace="~{fragments/selectWrap :: selectWrap}" />
+		</div>
+		<div th:replace="~{fragments/selectWrap :: selectWrap-mobile}" />
+		<div class="l-wrapper">
+			<div class="l-details-wrap">
+				<div class="l-left-menu-wrap">
+					<div class="l-page-title">my account</div>
+					<div class="bread-crumb">
+						home / <span>create account</span>
+					</div>
+					<div class="register-steps">
+						<ul>
+							<li class="inactive"><span class="inactive">1</span>create
+								account</li>
+							<li class="active"><span class="active">2</span>delivery
+								area</li>
+							<li class="inactive"><span class="inactive">3</span>your
+								details</li>
+							<li class="inactive"><span class="inactive">4</span>choose plan</li>
+						</ul>
+					</div>
+				</div>
+				<div class="l-right-detials-wrap">
+					<div class="sorry2" th:if="${redirectMsg}">
+						<span th:utext="${redirectMsg}" class="arrow-box-normal"></span>
+					</div>
+					<!-- <div  th:if="${successMessage}" class="msg-normal">
+                            <span th:utext="${successMessage}"></span></div> -->
+
+
+					<div class="space">&nbsp;</div>
+					<div class="l-right-title">do we deliver books to your area ?</div>
+					<div class="l-right-box-wrap">
+						<form action="#" autocomplete="off" th:action="@{/verifyDelivery}"
+							method="post" class="form-horizontal" role="form">
+							<div class="l-box">
+								<input autofocus="autofocus" type="text"
+									placeholder="ENTER YOUR PINCODE" name="pincode" />
+							</div>
+							<div class="l-btn">
+
+								<input type="submit" value="VERIFY DELIVERY" class="button" />
+
+							</div>
+						</form>
+						<div class="sorry">
+							<span th:if="${areaAvailabiltyStatus == 0}"> Ooops !
+								sorry, looks like we don't cover your locality at present.
+								Please let us know your residential area details and we will try
+								our best to reach out.</span> <span
+								th:if="${areaAvailabiltyStatus == 1}" style="color: green;">
+								Delivery is available in your locality. <a
+								th:href="@{/register3}" class="button">GO TO NEXT STEP </a>
+							</span>
+						</div>
+						<form action="#" autocomplete="off"
+							th:action="@{/sendAreaAdditionNotification}" method="post"
+							class="form-horizontal" role="form">
+							<div class="l-box" th:if="${ areaAvailabiltyStatus == 0}">
+
+
+								<input name="areaName" id="areaName" autofocus="autofocus"
+									type="text" placeholder="YOUR LOCALITY / LANDMARK" />
+							</div>
+							<div class="l-box" th:if="${ areaAvailabiltyStatus == 0}">
+								<input name="phoneNumber" id="phoneNumber" autofocus="autofocus"
+									type="text" placeholder="YOUR PHONE NUMBER" />
+							</div>
+							<div class="l-btn" th:if="${ areaAvailabiltyStatus == 0}">
+								<input type="submit" value="SUBMIT DETAILS" class="button" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div th:replace="~{fragments/footer :: testimonialFragment}"></div>
+		<div th:replace="~{fragments/footer :: footer}"></div>
+		<div th:replace="~{fragments/footer :: footer-mobile}"></div>
+
+	</div>
+
+</body>
+</html>

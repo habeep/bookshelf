@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/cartheadpart :: cartheadPart}"></head>
+
+<body>
+	<div class="sucess-msg-wrap">
+		<div class="succes-msg-in-wrap">
+			<div class="succes-msg">Welcome to The Bookshelf family</div>
+			<div class="succes-msg-details">
+				maxNumberofBooks= <label th:utext="${maxNumberofBooks}"/><br/>
+				maxNumberofDeliveries=<label th:utext="${maxNumberofDeliveries}"/><br/>
+				noOfMonths=<label th:utext="${noOfMonths}"/><br/>
+				maxDelivery=<label th:utext="${maxDelivery}"/><br/>
+				errorDetails=<label th:utext="${errorDetails}"/><br/>
+			</div>
+			<div class="space">&nbsp;</div>
+			<div class="s-btnt">
+				<a th:href="@{/quickSearch}"  class="sbutton">Rent Books</a> 
+				<a th:href="@{/dashboard}"  class="sbutton">My Dashboard</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

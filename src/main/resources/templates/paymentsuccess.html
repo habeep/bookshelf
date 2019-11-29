@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/cartheadpart :: cartheadPart}"></head>
+
+<body>
+	<div class="sucess-msg-wrap">
+		<div class="succes-msg-in-wrap">
+			<div class="succes-msg">Welcome to The Bookshelf family</div>
+			<div class="succes-msg-details" th:if="${paybyCashFlag == 1 }">
+				<form autocomplete="off" action="#" th:action="@{/onlinepayment}"
+					method="post" role="form">
+					<input type="hidden" name="userSubcId" id="userSubcId" th:value="${userSubcIdValue}" />
+					<input type="hidden" name="subcId" id="subcId" th:value="${subcIdValue}" />
+					<input type="hidden" name="payOption" id="payOption" value="0" />
+				<p>We're so happy that you are here ! You can now pay by cash or
+					card to the authorised sales team present in your premises.</p>
+
+				<p>If you are looking to connect with our sales team, Please
+					call our support team @ 8056073602 now !</p>
+
+				<div class="s-btnt">
+				    <a type="submit" class="sbutton" th:href="@{/dashboard}">Go back</a>
+				    <!-- <input type="submit" value="Pay online" class="sbutton" /> -->
+				</div>
+	
+				 </form>
+				
+			</div>
+			<div class="succes-msg-details" th:if="${paybyCashFlag == 0 }">
+				<p>We're so happy that you are here ! We have built bookshelf
+					library with a passion to bring lots and lots of books to children.
+					Start renting books for your little ones right away !</p>
+			</div>
+
+			<div class="space">&nbsp;</div>
+			<div class="s-btnt" th:if="${paybyCashFlag == 0 }">
+				<a th:href="@{/quickSearch}" class="sbutton">Rent Books</a> <a
+					th:href="@{/dashboard}" class="sbutton">My Dashboard</a>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<div class="l-left-menu-wrap" th:fragment="leftNav">
+	<div class="l-page-title">my bookshelf</div>
+	<div class="bread-crumb">
+		<a th:href="@{/}" >home / </a> <span>my account</span>
+	</div>
+	<div class="account-menu">
+		<ul>
+			<li><a class="dash" th:href="@{/dashboard}">dashboard</a></li>
+			<li><a class="detail" th:href="@{/userdetails}">my details</a></li>
+			<li><a class="history" th:href="@{/rentalhistory}">book
+					history</a></li>
+			<li><a class="wish" th:href="@{/wishlist}">wishlist</a></li>
+			<li><a class="plan" th:href="@{/pricing}">best offers for
+					you</a></li>
+			<li><a class="event" href="events.html">events</a></li>
+		</ul>
+	</div>
+</div>

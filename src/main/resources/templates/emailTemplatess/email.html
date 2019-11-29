@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Bookshelf - library for children</title>
+<link rel="stylesheet"
+	href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
+<style>
+/* A simple css reset */
+body, table, thead, tbody, tr, td, img {
+	padding: 0;
+	margin: 0;
+	border: none;
+	border-spacing: 0px;
+	border-collapse: collapse;
+	vertical-align: top;
+	font-family: "Lato", "Open Sans", sans-serif;
+}
+/* span */
+.email-name {
+	font-size: 26px;
+	color: #e44b36;
+	font-family: "Lato", "Open Sans", sans-serif;
+	font-weight: bold;
+}
+
+/* Add some padding for small screens */
+.wrapper {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	margin: 0;
+	padding: 0;
+	padding-bottom: 20px;
+	line-height: 1.6;
+	font-family: "Lato", "Open Sans", sans-serif;
+}
+
+p, a, li {
+	font-family: "Lato", "Open Sans", sans-serif;
+}
+
+img {
+	width: 100%;
+	display: block;
+}
+
+@media screen and (max-width:600px) {
+	.wrapper, .section-header {
+		width: 100% !important;
+	}
+	.wrapper .column {
+		width: 100%;
+		display: block;
+	}
+	.less-padding {
+		padding: 18px !important;
+	}
+}
+</style>
+</head>
+<body>
+	<table width="100%">
+		<tbody>
+			<tr>
+				<td class="wrapper" width="600" align="center">
+					<!-- Header image -->
+					<table class="section-header" cellpadding="0" cellspacing="0"
+						width="600">
+						<tr>
+							<td
+								style="background-image: url(http://acclivers.com/bookshelf/images/email-bg.jpg); background-repeat: no-repeat; border: solid 2px #4d4d4d; background-size: 100% auto; padding: 42px;"
+								class="less-padding">
+								<table>
+									<tbody>
+										<tr>
+											<td align="left">
+												<table width="500" class="column">
+													<tr>
+														<td style="padding-bottom: 42px;">
+															<table align="left">
+																<tr>
+																	<td align="left"><img
+																		src="http://acclivers.com/bookshelf/images/hello.png"
+																		width="88" height="51" style="width: auto;" /></td>
+																</tr>
+															</table>
+															<table align="left">
+																<tr>
+																	<td align="left" height="41"
+																		style="vertical-align: bottom; padding-left: 5px;">
+																		<span class="email-name" th:text="${' ' + name}"></span></td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										<!-- order number / delivery slot -->
+										<tr>
+											<td align="left" style="padding-bottom: 42px;">
+												<table>
+													<tr>
+														<td align="left" width="95%"
+															style="border: solid 1px #5f5e5e; height: 25px; padding: 9px;">
+															<table>
+																<tr>
+																	<td align="left" width="98%"
+																		style="border-bottom: solid 1px #b7b7b7;" height="22">
+																		<table align="left">
+																			<tr>
+																				<td align="left" width="110"
+																					style="font-weight: bold; font-size: 14px; padding-bottom: 7px; color: #5d5d5d;">Order
+																					no:</td>
+																			</tr>
+																		</table>
+																		<table align="left">
+																			<tr>
+																				<td align="left"
+																					style="font-weight: bold; font-size: 14px; padding-bottom: 7px; color: #5d5d5d;"><span th:text="${orderNumber}"></span></td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+																<tr>
+																	<td align="left" width="500"
+																		style="border-bottom: solid 1px #b7b7b7; padding-top: 9px;"
+																		height="22">
+																		<table align="left">
+																			<tr>
+																				<td align="left" width="110"
+																					style="font-weight: bold; font-size: 14px; padding-bottom: 7px; color: #5d5d5d;">Delivery
+																					slot:</td>
+																			</tr>
+																		</table>
+																		<table align="left">
+																			<tr>
+																				<td align="left"
+																					style="font-weight: bold; font-size: 14px; padding-bottom: 3px; color: #000000;"><span th:text="${deliverySlotDate}"></span></td>
+																			</tr>
+																			<tr>
+																				<td align="left"
+																					style="font-weight: bold; font-size: 14px; padding-bottom: 7px; color: #000000;"><span th:text="${deliverySlotTime}"></span></td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+																<tr>
+																	<td align="left" width="500" style="padding-top: 9px;"
+																		height="22">
+																		<table align="left">
+																			<tr>
+																				<td align="left" width="110"
+																					style="font-weight: bold; font-size: 14px; padding-bottom: 7px; color: #5d5d5d;">Address:</td>
+																			</tr>
+																		</table>
+																		<table align="left">
+																			<tr>
+																				<td align="left"
+																					style="font-weight: bold; font-size: 14px; padding-bottom: 3px; color: #5d5d5d;"><span th:text="${houseNumber}"></span></td>
+																			</tr>
+																			<tr>
+																				<td align="left"
+																					style="font-weight: bold; font-size: 14px; padding-bottom: 3px; color: #5d5d5d;"><span th:text="${street}"></span></td>
+																			</tr>
+																			<tr>
+																				<td align="left"
+																					style="font-weight: bold; font-size: 14px; color: #5d5d5d;"><span th:text="${locatilty}"></span><span th:text="${pincode}"></span></td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+
+										<!-- books to be returned / picked up -->
+
+										<tr th:if="${!returnbooks.empty}">
+											<td
+												style="font-weight: bold; font-size: 26px; color: #e44b36; padding-bottom: 22px;">
+												Books to be picked up</td>
+										</tr>
+										<tr th:each="book : ${returnbooks}">
+											<td style="padding-bottom: 12px;"><table>
+													<tr>
+														<td align="left" width="550"
+															style="border-bottom: solid 1px #b7b7b7;" height="22">
+															<table align="left">
+																<tr>
+																	<td align="left"
+																		style="font-weight: bold; font-size: 15px; color: #070606; padding-bottom: 4px;"><span th:text="${book[1]}"> Title </span>,&nbsp;</td>
+																</tr>
+															</table>
+															<table align="left">
+																<tr>
+																	<td align="left"
+																		style="font-weight: bold; font-size: 15px; color: #070606; padding-bottom: 4px;"><span th:text="${book[3]}"> Author </span></td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table></td>
+										</tr>
+										
+										
+
+										<!-- books to be delivered -->
+
+										<tr th:if="${!books.empty}">
+											<td
+												style="font-weight: bold; font-size: 26px; color: #e44b36; padding-top: 22px; padding-bottom: 22px;">
+												Books to be delivered</td>
+										</tr>
+										<tr th:each="book : ${books}">
+											<td style="padding-bottom: 12px;"><table>
+													<tr>
+														<td align="left" width="550"
+															style="border-bottom: solid 1px #b7b7b7;" height="22">
+															<table align="left">
+																<tr>
+																	<td align="left"
+																		style="font-weight: bold; font-size: 15px; color: #070606; padding-bottom: 4px;"
+																		class="mob-font"><span th:text="${book[1]}"> Title </span>,&nbsp;</td>
+																</tr>
+															</table>
+															<table align="left">
+																<tr>
+																	<td align="left"
+																		style="font-weight: bold; font-size: 15px; color: #070606; padding-bottom: 4px;"><span th:text="${book[3]}"> Author </span></td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table></td>
+										</tr>
+										
+										
+
+										<tr>
+											<td style="vertical-align: baseline;"><img
+												src="http://acclivers.com/bookshelf/images/logo-s.png"
+												/ style="width: auto; padding-top: 165px;"></td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</table> <!-- Two columns -->
+
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Bookshelf - library for children</title>
+<link rel="stylesheet"
+	href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
+<style>
+/* A simple css reset */
+body, table, thead, tbody, tr, td, img {
+	padding: 0;
+	margin: 0;
+	border: none;
+	border-spacing: 0px;
+	border-collapse: collapse;
+	vertical-align: top;
+	font-family: "Lato", "Open Sans", sans-serif;
+}
+/* span */
+.email-name {
+	font-size: 26px;
+	color: #e44b36;
+	font-family: "Lato", "Open Sans", sans-serif;
+	font-weight: bold;
+}
+
+.email-name-black {
+	font-size: 27px;
+	color: #000000;
+	font-family: "Lato", "Open Sans", sans-serif;
+	font-weight: bold;
+	line-height: 24px;
+}
+/* Add some padding for small screens */
+.wrapper {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	margin: 0;
+	padding: 0;
+	padding-bottom: 20px;
+	line-height: 1.6;
+	font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+p, a, li {
+	font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+img {
+	width: 100%;
+	display: block;
+}
+
+@media only screen and (max-width: 620px) {
+	@media screen and (max-width:600px) {
+		.wrapper, .section-header {
+			width: 100% !important;
+		}
+		.wrapper .column {
+			width: 100%;
+			display: block;
+		}
+	}
+}
+</style>
+</head>
+
+<body>
+	<body>
+		<table width="100%">
+			<tbody>
+				<tr>
+					<td class="wrapper" width="400" align="center">
+						<!-- Header image -->
+						<table class="section-header" cellpadding="0" cellspacing="0"
+							width="400">
+							<tr>
+								<td
+									style="background-image: url(http://acclivers.com/bookshelf/images/email-bg2.jpg); background-repeat: no-repeat; border: solid 2px #4d4d4d; padding-left: 52px; padding-right: 12px; padding-top: 65px; padding-bottom: 25px;"
+									class="less-padding">
+									<table>
+										<tbody>
+											<tr>
+												<td align="left">
+													<table width="400" class="column">
+														<tr>
+															<td>
+																<table align="left">
+																	<tr>
+																		<td align="left"
+																			style="vertical-align: bottom; padding-bottom: 11px; padding-top: 9px;">
+																			<span
+																			style="font-size: 27px; color: #000000; font-weight: bold; line-height: 24px;">Welcome
+																				to</span>
+																		</td>
+																	</tr>
+																</table>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<table align="left">
+																	<tr>
+																		<td align="left"
+																			style="vertical-align: bottom; padding-bottom: 55px;">
+																			<span
+																			style="font-size: 27px; color: #000000; font-weight: bold; line-height: 24px;"><span
+																				style="color: #e44b36;">The bookshelf&nbsp;</span>family</span>
+																		</td>
+																	</tr>
+																</table>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<!-- hello - member name -->
+
+											
+											
+											<tr>
+												<td align="left" style="padding-bottom: 37px;">
+													<table>
+														<tr>
+															<td width="300"
+																style="font-size: 22px; color: #3f3f3f; line-height: 26px;">[[${content}]]</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											
+											<tr>
+												<td align="left"
+													style="font-size: 21px; font-weight: bold; color: #000000; padding-bottom: 9px; padding-top: 49px;">
+													If you need to talk to us</td>
+											</tr>
+											<tr>
+												<td align="left">
+													<table align="left">
+														<tr>
+															<td align="left"
+																style="font-size: 18px; font-weight: bold; color: #000000; padding-bottom: 9px;">we
+																are available @ &nbsp;</td>
+														</tr>
+													</table>
+													<table align="left">
+														<tr>
+															<td align="left"
+																style="font-size: 18px; font-weight: bold; color: #e44b36; padding-bottom: 9px;">8056073602</td>
+														</tr>
+														<tr>
+															<td align="left"
+																style="font-size: 18px; font-weight: bold; color: #e44b36; padding-bottom: 9px;">9840215926</td>
+														</tr>
+													</table> <!-- Logo -->
+													<tr>
+														<td style="vertical-align: baseline;"><img
+															src="http://acclivers.com/bookshelf/images/logo-s.png"
+															/ style="width: auto; padding-top: 115px;"/></td>
+													</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</table> <!-- closing main table -->
+	</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/headpart_1 :: headPart_1}"></head>
+
+<body>
+	<div class="main-wrapper">
+		<div class="wrapper">
+			<div th:replace="~{fragments/headerWrap :: headerWrap}" />
+			<div th:replace="~{fragments/headerWrap :: headerWrap-mobile}" />
+			<div th:replace="~{fragments/selectWrap :: selectWrap}" />
+		</div>
+		<div th:replace="~{fragments/selectWrap :: selectWrap-mobile}" />
+		<div class="b-view-wrapper" th:each="book : ${books}">
+			<div class="book-view-wrap">
+				<div class="book-view">
+					<div class="book-view-image">
+						<a th:href="@{/bookdetails/}+${book[0]}"> <img
+							th:src="@{${'/bookimages/' + book[6] + '.jpg'}}" />
+						</a>
+					</div>
+					<div class="book-view-details">
+						<div class="book-view-title-wrap">
+							<div class="book-view-author">
+								written by <span th:text="${book[3]}"></span>
+							</div>
+							<div class="book-view-publisher">
+								<span th:text="${book[2]}">PublisherName </span>
+							</div>
+							<div class="book-view-age">
+								<span th:text="${book[7]}">Category</span>,<span class="lang" th:text="${book[5]}"/>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="book-details-wrap">
+				<div class="book-view-title">[[${book[1]}]]</div>
+				<div class="book-view-rating">
+					<!-- pages and binding added 120219 -->
+					<span class="age">[[${book[11]}]] pages,&nbsp; </span> <span
+						class="lang">[[${book[12]}]]</span>
+
+					<div class="rating" th:if="${finalRatingScore}==0" th:remove="tag">
+						<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+							class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+							class="fas fa-star"></i>
+					</div>
+					<div class="rating" th:if="${finalRatingScore}==1" th:remove="tag">
+						<i class="fas fa-star" style="color: #e34630;"></i> <i
+							class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+							class="fas fa-star"></i> <i class="fas fa-star"></i>
+					</div>
+					<div class="rating" th:if="${finalRatingScore}==2" th:remove="tag">
+						<i class="fas fa-star" style="color: #e34630;"></i> <i
+							class="fas fa-star" style="color: #e34630;"></i> <i
+							class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+							class="fas fa-star"></i>
+					</div>
+					<div class="rating" th:if="${finalRatingScore}==3" th:remove="tag">
+						<i class="fas fa-star" style="color: #e34630;"></i> <i
+							class="fas fa-star" style="color: #e34630;"></i> <i
+							class="fas fa-star" style="color: #e34630;"></i> <i
+							class="fas fa-star"></i> <i class="fas fa-star"></i>
+					</div>
+					<div class="rating" th:if="${finalRatingScore}==4" th:remove="tag">
+						<i class="fas fa-star" style="color: #e34630;"></i> <i
+							class="fas fa-star" style="color: #e34630;"></i> <i
+							class="fas fa-star" style="color: #e34630;"></i> <i
+							class="fas fa-star" style="color: #e34630;"></i> <i
+							class="fas fa-star"></i>
+					</div>
+					<div class="rating" th:if="${finalRatingScore}==5" th:remove="tag">
+						<i class="fas fa-star" style="color: #e34630;"></i> <i
+							class="fas fa-star" style="color: #e34630;"></i> <i
+							class="fas fa-star" style="color: #e34630;"></i> <i
+							class="fas fa-star" style="color: #e34630;"></i> <i
+							class="fas fa-star" style="color: #e34630;"></i>
+					</div>
+				</div>
+				<!-- long title added 120219 -->
+				<div th:if="${book[9]!='NA'}">
+					<div class="book-view-long-title">[[${book[9]}]]</div>
+				</div>
+				<div class="book-view-desc">[[${book[10]}]]</div>
+				<div class="book-view-rent-wrap">
+					<div class="book-view-rent">
+
+						<!-- <a th:href="@{'/user/books/' + ${book[0]}}"><img th:src="@{/images/rent-big.png}" /></a> -->
+						<a
+							th:onclick="'javascript:addBookToCartBookDetailsPage(\'' + ${book[0]} + '\');'"><img
+							th:src="@{/images/rent.png}" /></a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<!-- END -->
+		<div class="book-view-suggested">
+			<div class="suggested-title">continue browsing</div>
+			<div class="suggested-wrap">
+				<div class="book-flex">
+					<!-- <div class="left-arrow">
+							<i class="fas fa-angle-double-left"></i>
+						</div> -->
+					<div class="book" th:each="books : ${featuredBooks}">
+						<div class="book-image">
+							<a th:href="@{/bookdetails/}+${books[2]}"> <img
+								th:src="@{${'/bookimages/' + books[4] + '.jpg'}}" />
+							</a>
+						</div>
+						<div class="book-details">
+							<div class="book-title-wrap">
+								<div class="book-title">
+									<span th:text="${books[3]}"> Title </span>
+								</div>
+								<div class="book-age">
+									<span th:text="${books[5]}"> Fluent readers 8 + </span>, <span
+									th:text="${books[7]}"> Language </span>
+
+								</div>
+								<div class="book-author">
+									written by <span th:text="${books[0]}"> </span>
+								</div>
+								<!-- <div class="book-language">
+									<span th:text="${books[5]}">Readding Level</span>
+								</div> -->
+								<div class="book-rent-wrap">
+									<div class="book-publisher">
+										<span th:text="${books[1]}">Publisher</span>
+									</div>
+									<div class="book-rent" th:if="${rentFlag} != null ">
+										<a th:href="@{'/user/books/' + ${books[2]}}"><img
+											th:src="@{/images/rent.png}" /></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- <div class="right-arrow">
+							<i class="fas fa-angle-double-right"></i>
+						</div> -->
+				</div>
+
+			</div>
+		</div>
+		<div class="cart-add-msg" sec:authorize="isAuthenticated()">
+			<a th:href="@{/cart/}"><i class="fas fa-shopping-bag"><div
+						class="cart-number" id="cart-number3" name="cart-number3">
+						<span th:text="${userbookcartsize}"></span>
+					</div></i></a>
+		</div>
+		<!-- <div class="m-foot-cart">
+			<i class="fas fa-shopping-bag"></i>
+		</div> -->
+		<div th:replace="~{fragments/footer :: testimonialFragment}"></div>
+		<div th:replace="~{fragments/footer :: footer}"></div>
+		<div th:replace="~{fragments/footer :: footer-mobile}"></div>
+	</div>
+</body>
+</html>

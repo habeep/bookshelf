@@ -1,0 +1,128 @@
+
+<div class="header-wrap" th:fragment="headerWrap">
+
+	<div class="header-wrap">
+		<div class="logo">
+			<a th:href="@{/}"><img th:src="@{/images/logo.png}" /></a> 
+			
+		</div>
+		<input type="hidden" id="noImageLoc" name="noImageLoc" th:value="@{/images/no-image.jpg}"/>
+		<div class="header-right-wrap">
+			<div class="search-wrap">
+				<div class="search">
+				<form th:action="@{/search}" method="post" >
+					<!-- <input type="text" class="searchTerm"
+						placeholder="search for your favorite book"> -->
+						<input type="text" class="searchTerm" name="searchStr" id="searchStr" placeholder="search for your favorite book">
+					<button type="submit" class="searchButton"></button>
+					</form>
+				</div>
+			</div>
+			<div class="long-menu">
+				<ul>
+					<li sec:authorize="!isAuthenticated()"><a th:href="@{/howitworks}">how it works</a></li> 
+							<li sec:authorize="!isAuthenticated()"><a th:href="@{/pricing}">pricing</a></li>
+							<!-- <li sec:authorize="!isAuthenticated()"><a th:href="@{/signin}">Signup</a></li> -->
+							<li sec:authorize="isAuthenticated()"><a th:href="@{/cart/}">Mybag<span  th:text="${userbookcartsize}" class="cart-number2" id="cart-number2" name="cart-number2" >0</span></a></li>
+							<li sec:authorize="isAuthenticated()"><a th:href="@{/dashboard}">DashBoard</a></li>
+							<li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">login</a></li>
+							<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">logout</a></li>
+							<!-- <li  sec:authorize="isAuthenticated()"><a th:href="@{/cart/}">mybag<span class="cart-number2">4</span></a></li>
+							<span th:text="${userbookcartsize}"></span> -->
+				</ul>
+			</div>
+		</div>
+	</div>
+<!-- newly added - header mobile -->
+       <div class="header-wrap-mobile" th:fragment="headerWrap-mobile">
+          <div class="search-expand">
+       		 <div id="wrap">
+        <!-- hamburger -->
+      			<div class="menu-480"><i class="fas fa-bars"></i></div>
+      <div class="open-menu">
+        <ul>
+          <li sec:authorize="!isAuthenticated()"><a class="home" th:href="@{/}">home</a></li>
+		<li sec:authorize="!isAuthenticated()"><a th:href="@{/login}"
+					class="login-m">login</a></li>
+		<li sec:authorize="!isAuthenticated()"><a th:href="@{/howitworks}"
+					class="how-m">how it works</a></li>	
+					
+				<li sec:authorize="!isAuthenticated()"><a class="pricing-m" th:href="@{/pricing}">Pricing</a></li>				
+				<li sec:authorize="isAuthenticated()"><a class="dash" th:href="@{/dashboard}">dashboard</a></li>
+				<li sec:authorize="isAuthenticated()"><a class="cartmenu" th:href="@{/cart/}">my bag</a></li>
+				<li sec:authorize="isAuthenticated()"><a class="detail" th:href="@{/userdetails}">edit my
+						details</a></li>
+				<li sec:authorize="isAuthenticated()"><a class="plan" th:href="@{/myplan}">my plan</a></li>
+
+				<li sec:authorize="isAuthenticated()"><a class="history" th:href="@{/rentalhistory}">book
+						history</a></li>
+				<!-- <li sec:authorize="isAuthenticated()"><a class="wish" th:href="@{/wishlist}">wishlist</a></li> -->
+				<!-- <li sec:authorize="isAuthenticated()"><a class="event" href="@{/testimonial}">testimonial</a></li> -->
+				<!-- <li sec:authorize="!isAuthenticated()"><a class="contacts" href="@{/contacts}">contacts</a></li> -->
+				
+				<li sec:authorize="!isAuthenticated()"><a th:href="@{/login}"
+					class="signout-m">Signup</a></li>
+				<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}"
+					class="logout">logout</a></li>
+        </ul>
+      </div>
+      <!-- logo for mobile -->
+      <div class="mobile-logo"><a th:href="@{/}"> <img th:src="@{/images/m-logo.png}" /></a></div>
+      <!-- search expandable -->
+      <form th:action="@{/search}" method="post" >
+            <input name="searchStr" id="searchStr" type="text" />
+            <input id="search_submit" value="search" type="submit" />
+          </form>
+        </div>
+      </div>
+      </div>
+      
+	<!-- newly added - header mobile -->
+	<!-- <div class="header-wrap-mobile" th:fragment="headerWrap-mobile">
+		hamburger
+		<div class="menu-480">
+			<i class="fas fa-bars"></i>
+		</div>
+		<div class="open-menu">
+			<ul>
+				<li><a class="home" th:href="@{/}">home</a></li>
+				<li><a class="dash" th:href="@{/dashboard}">dashboard</a></li>
+				<li><a class="detail" th:href="@{/userdetails}">edit my
+						account</a></li>
+				<li><a class="cartmenu" th:href="@{/cart}">my cart</a></li>
+				<li><a class="history" th:href="@{/rentalhistory}">my book
+						history</a></li>
+				<li><a class="plan" href="#">my plan</a></li>
+				<li><a class="wish" th:href="@{/wishlist}">wishlist</a></li>
+				<li><a class="event" href="#">events</a></li>
+				<li><a class="contacts" href="#">contacts</a></li>
+				<li sec:authorize="!isAuthenticated()"><a th:href="@{/login}"
+					class="logout">login</a></li>
+				<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}"
+					class="logout">logout</a></li>
+
+			</ul>
+		</div>
+		logo for mobile
+		<div class="mobile-logo">
+			<img src="images/m-logo.png" />
+		</div>
+		search expandable
+		<div class="search-expand">
+			<div id="wrap">
+				<form action="" autocomplete="on">
+					<input id="search" name="search" type="text" /> <input
+						id="search_submit" value="Rechercher" type="submit" />
+				</form>
+			</div>
+		</div>
+	</div> -->
+	<!-- newly added - header-mobile ends -->
+
+
+</div>
+
+
+
+
+

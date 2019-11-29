@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/headpart :: headPart}"></head>
+<body>
+	<div class="main-wrapper">
+		<div th:replace="~{fragments/header :: header}"></div>
+		<div class="b-wrapper">
+			<div class="book-wrap">
+			
+				<div class="book" th:each="subscription : ${subscriptions}">
+					<div class="book-image">
+						<a th:href="@{'/'+${subscription[0]}}"><img src="images/b1.jpg" /></a>
+					</div>
+					<div class="book-details">
+						<div class="book-title-wrap">
+							<div class="book-title"><span th:text="${subscription[1]}"> Title </span></div>
+							<div class="book-age"><span th:text="${subscription[2]}"> Author </span></div>
+							<div class="book-author">Name <span th:text="${subscription[4]}"> Author </span></div>
+							<div class="book-author">Summary <span th:text="${subscription[5]}"> Author </span></div>
+							<div class="book-author">Summary <span th:text="${subscription[6]}"> Author </span></div>
+							<div class="book-author">Summary <span th:text="${subscription[7]}"> Author </span></div>
+							<div class="book-rent-wrap">
+								<div class="book-publisher"><span th:text="${subscription[1]}">  </span></div>
+								<div class="book-rent">
+									<a th:href="@{'/subscribeMe/'+${subscription[0]}}"><img src="images/rent.png" /></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<div th:replace="~{fragments/footer :: testimonialFragment}"></div>
+		<div th:replace="~{fragments/footer :: footer}"></div>
+		<div th:replace="~{fragments/footer :: footer-mobile}"></div>
+	</div>
+</body>
+</html>

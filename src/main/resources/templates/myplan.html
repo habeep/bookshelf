@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/headpart_1 :: headPart_1}"></head>
+<body>
+	<div class="main-wrapper">
+		<div class="wrapper">
+			<div th:replace="~{fragments/headerWrap :: headerWrap}" />
+			<div th:replace="~{fragments/headerWrap :: headerWrap-mobile}" />
+			<div th:replace="~{fragments/selectWrap :: selectWrap}" />
+		</div>
+		<div th:replace="~{fragments/selectWrap :: selectWrap-mobile}" />
+		<div class="l-wrapper">
+			<div class="l-details-wrap">
+				<div th:replace="~{fragments/leftNav :: leftNav}"></div>
+				<div class="l-right-detials-wrap">
+
+					<div class="l-right-title" th:if="${usc == null}">
+						<a th:href="@{'/pricing'}"> sorry you are not subscribe user
+							click here</a>
+					</div>
+					<div class="l-right-box-wrap">
+						<div class="cart-title">YOUR PLAN</div>
+						<div class="offer-item" th:each="uscObj:${usc}">
+							<div class="b-history-book-details">
+							
+								<label><span class="myplan-planname" th:utext="${uscObj[0]}"></span></label> <!-- <span 
+									 class="myplan-deliveryno" ><label th:utext="${uscObj[1]}"></label> deliveries per month</span> --> <span  class="myplan-perdel" 
+									> <label th:utext="${uscObj[3]}"></label> books per delivery</span>
+							</div>
+							<div class="b-history-book-status">
+								valid till <label
+									th:utext="${#dates.format(uscObj[2], 'dd-MMM-yyyy')}"></label>
+							</div>
+						</div>
+
+						<div class="space">&nbsp;</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div th:replace="~{fragments/footer :: testimonialFragment}"></div>
+		<div th:replace="~{fragments/footer :: footer}"></div>
+		<div th:replace="~{fragments/footer :: footer-mobile}"></div>
+
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/headpart_1 :: headPart_1}"></head>
+<body>
+	<div class="main-wrapper">
+		<div class="wrapper">
+
+			<div th:replace="~{fragments/headerWrap :: headerWrap}" />
+			<div th:replace="~{fragments/headerWrap :: headerWrap-mobile}" />
+			<div th:replace="~{fragments/selectWrap :: selectWrap}" />
+		</div>
+		<div th:replace="~{fragments/selectWrap :: selectWrap-mobile}" />
+		<div class="l-wrapper">
+			<div class="l-details-wrap">
+				<div th:replace="~{fragments/leftNav :: leftNav}"></div>
+				<div class="l-right-detials-wrap" th:if="${isExist == null}">
+				<div class="cart-title" th:if="${successMsg != null}"><span th:utext="${successMsg}" ></span></div>
+				
+					<form autocomplete="off" action="#" th:action="@{/testimonial}"
+						method="post" class="form-horizontal" role="form">
+						<div class="l-right-title">your review please</div>
+						<div class="l-right-box-wrap">
+							<div class="l-box">
+								<textarea type="text" id="testimonial" name="testimonial" placeholder="How are we doing ? Please give us your valuable review" cols="30" rows="5" class="testimonial-user"></textarea>
+							</div>
+
+							<div class="l-btn">
+
+								<button type="submit" class="button">Add</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="l-right-detials-wrap" th:if="${isExist != null}">
+					<span th:utext="${isExist}"></span>
+				</div>
+			</div>
+		</div>
+		<div th:replace="~{fragments/footer :: testimonialFragment}"></div>
+		<div th:replace="~{fragments/footer :: footer}"></div>
+		<div th:replace="~{fragments/footer :: footer-mobile}"></div>
+
+	</div>
+
+</body>
+</html>

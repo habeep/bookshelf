@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/headpart_1 :: headPart_1}"></head>
+<body>
+	<div class="main-wrapper">
+		<div class="wrapper">
+			<div th:replace="~{fragments/headerWrap :: headerWrap}" />
+			<div th:replace="~{fragments/headerWrap :: headerWrap-mobile}" />
+			<div th:replace="~{fragments/selectWrap :: selectWrap}" />
+		</div>
+		<div th:replace="~{fragments/selectWrap :: selectWrap-mobile}" />
+		<div class="l-wrapper">
+			<div class="l-details-wrap">
+				<div th:replace="~{fragments/leftNav :: leftNav}"></div>
+				<div class="l-right-detials-wrap">
+					<div class="l-right-title">member name's bookshelf</div>
+					<div class="l-right-box-wrap">
+						<div class="cart-title">
+							your bag has <span th:text="${noofWishListItems}"> books </span>
+						</div>
+						<div class="cart-items-wrap2">
+
+							<div class="cart-item-wrap2"
+								th:each="userwishListItem : ${userwishList}">
+								<div class="cart-thumbnail">
+									<a th:href="@{/bookdetails/}+${userwishListItem[0]}"><img
+										th:src="@{'/bookimages/'+${userwishListItem[12]}+'.jpg'}" /></a>
+								</div>
+								<div class="cart-book-title">
+									<div class="c-title">
+										<a th:href="@{/bookdetails/}+${userwishListItem[0]}"><span
+											th:text="${userwishListItem[1]}"> Title </span></a>
+									</div>
+									<div class="cart-book-age">
+										<span th:text="${userwishListItem[4]}"> Age </span>
+									</div>
+								</div>
+								<div class="cart-book-details">
+									<div class="c-book-author">
+										written by <span th:text="${userwishListItem[3]}">
+											Title </span>
+									</div>
+									<div class="c-book-publisher">
+										<span th:text="${userwishListItem[3]}"> Publisher </span>
+									</div>
+								</div>
+								<div class="cart-book-delete">
+									<a th:href="@{'/deletewishlist/' + ${userwishListItem[11]}}">Remove<i
+										class="fas fa-undo" style="padding-left: 5px;"></i></a>
+								</div>
+								<div class="rating">
+									<i
+										th:each="i : ${#numbers.sequence( 1, __${'rating_'+userwishListItem[0]}__)}">
+										<i class="fas fa-star" style="color: #e34630;"></i>
+									</i>
+
+								</div>
+							</div>
+							<!-- <div id="ratingDiv" class="rating" th:if="${__${'isExist_'+book[0]}__ != null}"> -->
+
+
+							<!-- <div class="rating">
+								<span>Did you like this book ? Rate it !</span> <i
+									class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+									class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+									class="fas fa-star"></i>
+							</div> -->
+
+						</div>
+						<div class="space">&nbsp;</div>
+						<div class="l-btn2">
+							<form action="#">
+								<input type="submit" value="don't rent. schedule a pick up"
+									class="button">
+							</form>
+						</div>
+						<div class="l-btn3">
+
+							<a th:href="@{/quickSearch}" class="button">rent books</a>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div th:replace="~{fragments/footer :: testimonialFragment}"></div>
+		<div th:replace="~{fragments/footer :: footer}"></div>
+		<div th:replace="~{fragments/footer :: footer-mobile}"></div>
+
+	</div>
+
+</body>
+</html>

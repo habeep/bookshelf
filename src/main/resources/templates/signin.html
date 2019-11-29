@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/headpart_1 :: headPart_1}"></head>
+<body>
+	<div class="main-wrapper">
+		<div class="wrapper">
+			<div th:replace="~{fragments/headerWrap :: headerWrap}" />
+			<div th:replace="~{fragments/headerWrap :: headerWrap-mobile}" />
+			<div th:replace="~{fragments/selectWrap :: selectWrap}" />
+		</div>
+		<div th:replace="~{fragments/selectWrap :: selectWrap-mobile}" />
+
+		<div class="l-wrapper">
+			<div class="l-details-wrap">
+				<div class="l-left-menu-wrap">
+					<div class="l-page-title">my account</div>
+					<div class="bread-crumb">
+						home / <span>create account</span>
+					</div>
+					<div class="register-steps">
+						<ul>
+							<li class="active"><span class="active">1</span>create
+								account</li>
+							<li class="inactive"><span class="inactive">2</span>delivery
+								area</li>
+							<li class="inactive"><span class="inactive">3</span>your
+								details</li>
+							<li class="inactive"><span class="inactive">4</span>choose plan</li>
+						</ul>
+					</div>
+				</div>
+				<div class="l-right-detials-wrap">
+					<div class="l-right-title">create account</div>
+					<div class="l-right-box-wrap">
+						<form action="#" autocomplete="off"
+							th:action="@{/initialRegistration}" th:object="${user}"
+							method="post" class="form-horizontal" role="form">
+							<div class="l-box2">
+
+								<input autofocus="autofocus" type="text" placeholder="EMAIL"
+									th:field="*{emailId}" name="emailId" />
+
+								<div class="error-msg-wrap"
+									th:if="${#fields.hasErrors('emailId')}">
+									<div class="arrow-box">
+										<i class="fas fa-exclamation-triangle"></i> <label
+											th:if="${#fields.hasErrors('emailId')}"
+											th:errors="*{emailId}" class="validation-message"></label>
+									</div>
+								</div>
+
+								<!-- <label
+								th:if="${#fields.hasErrors('emailId')}" th:errors="*{emailId}"
+								class="validation-message"></label> -->
+
+							</div>
+							<div class="l-box2">
+								<input autofocus="autofocus" type="password"
+									placeholder="PASSWORD" th:field="*{password}" />
+
+								<div class="error-msg-wrap"
+									th:if="${#fields.hasErrors('password')}">
+									<div class="arrow-box">
+										<i class="fas fa-exclamation-triangle"></i> <label
+											th:if="${#fields.hasErrors('password')}"
+											th:errors="*{password}" class="validation-message"></label>
+									</div>
+								</div>
+
+								<!-- <label
+								th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+								class="validation-message"></label> -->
+							</div>
+							<div class="l-box2">
+								<input autofocus="autofocus" type="password"
+									th:field="*{confirmpassword}" placeholder="CONFIRM PASSWORD" />
+
+								<div class="error-msg-wrap"
+									th:if="${#fields.hasErrors('confirmpassword')}">
+									<div class="arrow-box">
+										<i class="fas fa-exclamation-triangle"></i> <label
+											th:if="${#fields.hasErrors('confirmpassword')}"
+											th:errors="*{confirmpassword}" class="validation-message"></label>
+									</div>
+								</div>
+								<!-- <label th:if="${#fields.hasErrors('confirmpassword')}"
+								th:errors="*{confirmpassword}" class="validation-message"></label> -->
+							</div>
+							<div class="l-btn">
+
+								<input type="submit" value="create account" class="button" />
+
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div th:replace="~{fragments/footer :: testimonialFragment}"></div>
+		<div th:replace="~{fragments/footer :: footer}"></div>
+		<div th:replace="~{fragments/footer :: footer-mobile}"></div>
+
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,213 @@
+<div class="testimonial-wrap" th:fragment="testimonialFragment">
+	<!-- 	<div class="testimonial" th:each="testimonialObj : ${testimonials}">
+		<span th:utext="${testimonialObj[0]}"></span>
+		<div class="testimonial-name">
+			<span th:utext="${testimonialObj[1]}"></span>
+		</div>
+	</div> -->
+	<div class="testimonial">If you don't like to read, you haven't
+		found the right book.</div>
+	<div class="testimonial-name">J.K.Rowling</div>
+
+</div>
+
+<div class="footer-wrap" th:fragment="footer">
+	<div class="footer-text-wrap">
+		<div class="footer-logo">
+			<a th:href="@{/}"><img th:src="@{/images/logo.png}" /></a>
+		</div>
+		<div class="footer-block1">
+			<div class="footer-heading">Explore</div>
+			<div class="footer-text">
+				<ul>
+					<li ><a th:href="@{/howitworks}">how it works</a></li>
+					<li ><a th:href="@{/pricing}">pricing plans</a></li>
+					<li sec:authorize="!isAuthenticated()" ><a th:href="@{/signin}">new user signup</a></li>
+					<li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">login</a></li>
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">logout</a></li>
+					<!-- <li><a th:href="@{/contact}">contact</a></li> -->
+				</ul>
+			</div>
+		</div>
+		<div class="footer-block2">
+			<div class="footer-heading">Books</div>
+			<div class="footer-text">
+				<ul>
+					<li><a th:href="@{/quickReadingLevelSearch/1}">early
+							readers</a></li>
+					<li><a th:href="@{/quickReadingLevelSearch/2}">young
+							readers</a></li>
+					<li><a th:href="@{/quickReadingLevelSearch/4}">fluent
+							readers</a></li>
+					<li><a th:href="@{/quickCategorySearch/3}">educational</a></li>
+					<li><a th:href="@{quickCategorySearch/7}">Comics</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- <div class="footer-block3">
+			<div class="footer-heading">Good Reads</div>
+			<div class="footer-text">
+				<ul>
+					<li><a th:href="@{/how-it-works}">top 100 books</a></li>
+					<li><a th:href="@{/pricing}">cbse recommended</a></li>
+					<li><a th:href="@{/signup}">top 50 classics</a></li>
+					<li><a th:href="@{/login}">indian authors</a></li>
+					<li><a th:href="@{/contact}">all time read list</a></li>
+				</ul>
+			</div>
+		</div> -->
+		<div class="footer-block3">
+			<div class="footer-heading">category</div>
+			<div class="footer-text">
+				<ul>
+					<li><a th:href="@{/quickCategorySearch/4}">fiction</a></li>
+					<li><a th:href="@{/quickCategorySearch/7}">epics &
+							mythology</a></li>
+					<li><a th:href="@{/quickCategorySearch/1}">picture books</a></li>
+					<li><a th:href="@{/quickCategorySearch/10}">chapter books</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- <div class="footer-block-last">
+			<div class="footer-text">
+				<ul>
+					<li><a th:href="@{/how-it-works}">connect with us on
+							facebook</a></li>
+					<li><a th:href="@{/how-it-works}">info@bookshelf-library.com</a></li>
+					<li>9884409372</li>
+				</ul>
+			</div>
+		</div> -->
+		<div class="footer-block-last">
+			<div class="footer-text">
+				<ul>
+					<li><a href="#">info@bookshelf-library.com</a></li>
+					<li>8056073602</li>
+					<li><a href="http://www.acclivers.com/" target="_blank">a
+							subsidiary of acclivers</a></li>
+					<li><i class="far fa-copyright"></i>&nbsp;&nbsp;acclivers</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- newly added - footer-mobile starts-->
+<div class="footer-mobile" th:fragment="footer-mobile">
+	<div id="myBtn" class="m-foot-tab">
+		<a class="searchfooter" href="#">search</a>
+	</div>
+	<div class="m-foot-tab" sec:authorize="isAuthenticated()">
+		<a class="dash" th:href="@{/dashboard}">dashboard</a>
+	</div>
+	<div class="m-foot-tab" sec:authorize="!isAuthenticated()">
+		<a class="signup-m-f" th:href="@{/signin}">Signin</a>
+	</div>
+
+	<div class="m-foot-tab" sec:authorize="isAuthenticated()">
+		<a class="cartmenu" th:href="@{/logout}">logout</a>
+	</div>
+	<div class="m-foot-tab" sec:authorize="!isAuthenticated()">
+		<a class="cartmenu" th:href="@{/login}">login</a>
+	</div>
+
+	<div class="m-foot-tab">&nbsp;</div>
+	<div class="m-foot-tab">&nbsp;</div>
+
+	<!-- newly added - footer-mobile ends-->
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<form th:action="@{/selectSearch}" method="post" class="form-signin">
+				<div class="modal-header">
+					<div class="modal-heading">
+						<span>Advanced search</span>
+					</div>
+					<div class="close">&times;</div>
+				</div>
+				<div class="modal-body">
+
+
+					<div class="adv-search-title">choose reading level</div>
+					<div class="styled-select">
+						<select name="readingLevelList">
+							<option value="-1">Reading Level</option>
+							<option th:each="dropDownItem : ${readingLevels}"
+								th:value="${dropDownItem.readingLevelId}"
+								th:text="${dropDownItem.readingLevel}" />
+
+						</select>
+					</div>
+					<div class="adv-search-title">choose langauge</div>
+					<div class="styled-select">
+						<select name="languageList">
+							<option value="-1">Languages</option>
+							<option th:each="dropDownItem : ${languages}"
+								th:value="${dropDownItem.languageID}"
+								th:text="${dropDownItem.language}" />
+						</select>
+					</div>
+					<div class="adv-search-title">choose category</div>
+					<div class="styled-select">
+						<select name="categoriesList">
+							<option value="-1">Categories</option>
+							<option th:each="dropDownItem : ${categories}"
+								th:value="${dropDownItem.categoryId}"
+								th:text="${dropDownItem.categoryName}" />
+						</select>
+					</div>
+					<div class="adv-search-title">choose publisher</div>
+					<div class="styled-select">
+						<select name="publishersList">
+							<option value="-1">Publishers</option>
+							<option th:each="dropDownItem : ${publishers}"
+								th:value="${dropDownItem.publisherId}"
+								th:text="${dropDownItem.publisherName}" />
+						</select>
+					</div>
+
+				</div>
+				<div class="m-btn">
+
+					<input type="submit" value="Find books" class="m-button" />
+
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<script>
+		// Get the modal
+		var modal = document.getElementById('myModal');
+
+		// Get the button that opens the modal
+		var btn = document.getElementById("myBtn");
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks the button, open the modal 
+		btn.onclick = function() {
+			modal.style.display = "block";
+		}
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+			modal.style.display = "none";
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+	</script>
+	<div class="m-foot-cart">
+		<i class="fas fa-shopping-bag"></i>
+	</div>
+</div>
+<!-- FOOTER ENDS -->

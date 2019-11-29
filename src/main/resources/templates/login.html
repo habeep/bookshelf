@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/loginheadpart :: loginheadPart}"></head>
+<body>
+	<!-- <div class="select-wrap-sticky"> -->
+	<!-- <div th:replace="~{fragments/selectSearch :: selectSearch}"></div> -->
+	<div class="login-reg">
+		<div class="ls-header">
+			<div class="logo-ls">
+				<a th:href="@{/}"> <!-- <span th:utext="${successMessage}" class="msg-normal"></span> -->
+					<img th:src="@{/images/logo.png}" /></a>
+			</div>
+		</div>
+		<div class="left-login">
+			<div class="l-right-title">sign in</div>
+
+			<!-- <div th:if="${successMessage}" class="msg-normal">
+				<span th:utext="${successMessage}"></span>
+			</div> -->
+
+			<div class="error-msg-wrap" th:if="${successMessage}">
+				<div class="msg">
+					<i class="fas fa-exclamation-circle"></i><span th:utext="${successMessage}"></span>
+				</div>
+			</div>
+
+			<div class="l-right-box-wrap">
+				<form th:action="@{/login}" method="post" class="form-signin">
+					<div class="l-box2">
+						<input id="email" name="email" autofocus="autofocus" type="text"
+							placeholder="EMAIL" />
+					</div>
+					<div class="l-box2">
+						<input id="password" name="password" autofocus="autofocus"
+							type="password" placeholder="PASSWORD" />
+					</div>
+					<div class="error-msg-wrap" th:if="${param.error}">
+						<div class="arrow-box">
+
+
+							<i class="fas fa-exclamation-triangle"></i>Email or Password
+							invalid, please verify
+							</p>
+						</div>
+					</div>
+					<div class="l-btn">
+
+						<input type="submit" value="sign in" class="button" />
+					</div>
+
+					<div class="forgot-pass">
+						<a th:href="@{/forgotpassword}">Forgot Password</a>
+					</div>
+				</form>
+			</div>
+
+
+		</div>
+		<div class="right-reg">
+
+			<div class="l-right-title">create account</div>
+			<div class="l-right-box-wrap">
+				<form th:action="@{/initialRegistration}" th:object="${user}"
+					method="post" class="form-horizontal" role="form">
+					<div class="l-box2">
+
+						<input autofocus="autofocus" type="text" placeholder="EMAIL"
+							th:field="*{emailId}" name="emailId" /> <label
+							th:if="${#fields.hasErrors('emailId')}" th:errors="*{emailId}"
+							class="validation-message"></label>
+					</div>
+					<div class="l-box2">
+						<input autofocus="autofocus" type="password"
+							placeholder="PASSWORD" th:field="*{password}" /> <label
+							th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+							class="validation-message"></label>
+					</div>
+					<div class="l-box2">
+						<input autofocus="autofocus" type="password"
+							th:field="*{confirmpassword}" placeholder="CONFIRM PASSWORD" />
+						<label th:if="${#fields.hasErrors('confirmpassword')}"
+							th:errors="*{confirmpassword}" class="validation-message"></label>
+					</div>
+					<div class="l-btn">
+
+						<input type="submit" value="create account" class="button" />
+
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+	</div>
+</body>
+</html>

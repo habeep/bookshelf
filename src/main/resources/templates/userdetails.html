@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/headpart_1 :: headPart_1}"></head>
+<body>
+	<div class="main-wrapper">
+		<div class="wrapper">
+
+			<div th:replace="~{fragments/headerWrap :: headerWrap}" />
+			<div th:replace="~{fragments/headerWrap :: headerWrap-mobile}" />
+			<div th:replace="~{fragments/selectWrap :: selectWrap}" />
+		</div>
+		<div th:replace="~{fragments/selectWrap :: selectWrap-mobile}" />
+		<div class="l-wrapper">
+			<div class="l-details-wrap">
+				<div th:replace="~{fragments/leftNav :: leftNav}"></div>
+				<div class="l-right-detials-wrap">
+
+					<div class="l-right-title">MEMBER DETAILS</div>
+					<div class="l-right-box-wrap">
+						<form autocomplete="off" action="#" th:action="@{/userdetails}"
+							th:object="${user}" method="post" class="form-horizontal"
+							role="form">
+							<div class="l-box">
+								<input type="text" th:field="*{name}" placeholder="name"
+									class="form-control" /> 
+									<input type="hidden"
+									th:field="*{emailId}" class="form-control" /> 
+									<input
+									type="hidden" th:field="*{id}" class="form-control" />
+									<input
+									type="hidden" th:field="*{flag}" class="form-control" />
+
+									<!--  <i
+									class="fas fa-pen"></i>
+ -->
+								<div class="error-msg-wrap" th:if="${#fields.hasErrors('name')}">
+									<div class="arrow-box">
+										<i class="fas fa-exclamation-triangle"></i> <label
+											th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+											class="validation-message"></label>
+									</div>
+								</div>
+
+							</div>
+
+
+
+							<div class="l-box">
+
+								<input  type="text" 
+									th:field="*{houseNumber}" placeholder="HOUSE NUMBER / NAME " />
+
+								<div class="error-msg-wrap"
+									th:if="${#fields.hasErrors('houseNumber')}">
+									<div class="arrow-box">
+										<i class="fas fa-exclamation-triangle"></i> <label
+											th:errors="*{houseNumber}" class="validation-message"></label>
+									</div>
+								</div>
+							</div>
+							<div class="l-box">
+
+								<input  type="text" th:field="*{street}"
+									 placeholder="STREET / BUILDING" />
+								<div class="error-msg-wrap"
+									th:if="${#fields.hasErrors('street')}">
+									<div class="arrow-box">
+										<i class="fas fa-exclamation-triangle"></i> <label
+											th:errors="*{street}" class="validation-message"></label>
+									</div>
+								</div>
+							</div>
+							<div class="l-box">
+
+								<input  type="text" placeholder="LOCALITY"
+									 th:field="*{locality}" />
+								<div class="error-msg-wrap"
+									th:if="${#fields.hasErrors('locality')}">
+									<div class="arrow-box">
+										<i class="fas fa-exclamation-triangle"></i> <label
+											th:errors="*{locality}" class="validation-message"></label>
+									</div>
+								</div>
+							</div>
+							<div class="l-box">
+
+								<input  type="text" placeholder="CITY"
+									 th:field="*{city}" />
+								<div class="error-msg-wrap" th:if="${#fields.hasErrors('city')}">
+									<div class="arrow-box">
+										<i class="fas fa-exclamation-triangle"></i> <label
+											th:errors="*{city}" class="validation-message"></label>
+									</div>
+								</div>
+							</div>
+							<div class="l-box">
+
+								<input  type="text" placeholder="LANDMARK"
+									 th:field="*{landmark}" />
+								<div class="error-msg-wrap"
+									th:if="${#fields.hasErrors('landmark')}">
+									<div class="arrow-box">
+										<i class="fas fa-exclamation-triangle"></i> <label
+											th:errors="*{landmark}" class="validation-message"></label>
+									</div>
+								</div>
+							</div>
+							<div class="l-box">
+
+
+								<input  type="text" placeholder="PINCODE"
+									 th:field="*{pincode}" />
+									 <span class="tooltip">
+									 	<i class="fas fa-bell"></i>
+									 	<span class="tooltip-content">Members would be able to change the address only if the new pincode falls within our available delivery areas.</span>
+									 </span>
+									 
+								<div class="error-msg-wrap"
+									th:if="${#fields.hasErrors('pincode')}">
+									<div class="arrow-box">
+										<i class="fas fa-exclamation-triangle"></i> <label
+											th:errors="*{pincode}" class="validation-message"></label>
+									</div>
+								</div>
+							</div>
+							<div class="l-box">
+
+								<input  type="text"
+									placeholder="YOUR PHONE NUMBER" th:field="*{phoneNumber}" /> 
+									<!-- <i
+									class="fas fa-pen"></i> -->
+								<div class="error-msg-wrap"
+									th:if="${#fields.hasErrors('phoneNumber')}">
+									<div class="arrow-box">
+										<i class="fas fa-exclamation-triangle"></i> <label
+											th:errors="*{phoneNumber}" class="validation-message"></label>
+									</div>
+								</div>
+							</div>
+							<div class="l-btn">
+
+								<input type="submit" value="CONFIRM CHANGES" class="button" />
+
+							</div>
+						</form>
+
+						<div class="l-right-title3">CHANGE YOUR PASSWORD</div>
+						<div class="error-msg-wrap" th:if="${successMessage != null}">
+							<div class="message">
+								<span th:utext="${successMessage}" />
+							</div>
+						</div>
+						<form th:action="@{/changepassword}" method="post"
+							class="form-signin">
+							<div class="l-box">
+								<input type="password" placeholder="NEW PASSWORD"
+									name="newpassword" />
+							</div>
+							<div class="l-box">
+								<input type="password" placeholder="RE-ENTER NEW PASSWORD"
+									name="confirmnewpassword" />
+								<div class="error-msg-wrap" th:if="${errorMessage != null}">
+									<div class="arrow-box-normal">
+										<span th:utext="${errorMessage}" />
+									</div>
+								</div>
+
+							</div>
+							<div class="l-btn">
+
+								<input type="submit" value="SAVE CHANGES" class="button" />
+
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div th:replace="~{fragments/footer :: testimonialFragment}"></div>
+		<div th:replace="~{fragments/footer :: footer}"></div>
+		<div th:replace="~{fragments/footer :: footer-mobile}"></div>
+
+	</div>
+
+</body>
+</html>

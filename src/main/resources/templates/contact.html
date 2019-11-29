@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragments/headpartwithSelect :: headPartwithSelect}"></head>
+<body>
+	<div class="main-wrapper">
+		<div class="wrapper">
+			<div th:replace="~{fragments/headerWrap :: headerWrap}" />
+			<div th:replace="~{fragments/headerWrap :: headerWrap-mobile}" />
+			<div th:replace="~{fragments/selectWrap :: selectWrap}" />
+
+		</div>
+<div th:replace="~{fragments/selectWrap :: selectWrap-mobile}" />
+		<div class="b-wrapper">
+			<!-- newly added - pricing / howitworks -->
+			<div class="price-wrap">
+				<div class="price-desc">
+					<div class="price-desc-left2">
+						<div>How it works.</div>
+					</div>
+					<div class="price-desc-right-long">
+						We offer a simple solution to support & <span>sustain a
+							healthy reading habit</span> in your child. Get started with a <span>bookshelf
+							membership</span> today !
+					</div>
+				</div>
+				<div class="howitworks-wrap">
+					<div class="howitworks">
+						<div class="howitworks-icon">
+							<img th:src="@{/images/howitworks1.png}" />
+						</div>
+						<div class="howitworks-details">
+							<h1>
+								<span>#1 </span>Select books from our website.
+							</h1>
+							<div class="howitworks-steps">
+								Become a member and browse through our website.Bookshelf is an
+								exclusive online kid’s library.<a th:href="@{/login}">
+									Signup here !</a> <br />
+								<br /> We have a huge collection of carefully selected
+								multi-lingual books that cater to the reading requirements of
+								children aged 3 to 12. <br /> <a th:href="@{/quickSearch}">Check
+									our book collection here !</a>
+							</div>
+						</div>
+					</div>
+					<div class="howitworks">
+						<div class="howitworks-icon">
+							<img th:src="@{/images/howitworks2.png}" />
+						</div>
+						<div class="howitworks-details">
+							<h1>
+								<span>#2 </span>Add books to your cart and choose a convenient
+								delivery slot. We deliver the books to your home.
+							</h1>
+							<div class="howitworks-steps">We do 3 free deliveries in a
+								month for all registered members. You can choose a convenient
+								day and time from the available delivery slots.</div>
+						</div>
+					</div>
+					<div class="howitworks">
+						<div class="howitworks-icon">
+							<img th:src="@{/images/howitworks3.png}" />
+						</div>
+						<div class="howitworks-details">
+							<h1>
+								<span>#3 </span>Enjoy reading the books and schedule a pickup or
+								delivery for your next set of books.
+							</h1>
+							<div class="howitworks-steps">
+								After you’ve finished reading, choose your next set of books;
+								schedule a delivery and we’ll bring you the new books and pick
+								up the earlier books.<br />
+								<br /> It’s convenient.<br /> <a th:href="@{/pricing}">Check
+									out our membership plans and pricing !</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- newly added pricing / howitworks ends -->
+		</div>
+		<div th:replace="~{fragments/footer :: testimonialFragment}"></div>
+		<div th:replace="~{fragments/footer :: footer}"></div>
+		<div th:replace="~{fragments/footer :: footer-mobile}"></div>
+
+		<div class="m-foot-cart">
+			<i class="fas fa-shopping-bag"></i>
+		</div>
+	</div>
+</body>
+</html>

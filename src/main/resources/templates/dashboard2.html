@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/dashboardheadpart2 :: dashboardheadPart2}"></head>
+<body>
+	<div class="main-wrapper">
+		<div class="wrapper">
+			<div th:replace="~{fragments/headerWrap :: headerWrap}"></div>
+			<div th:replace="~{fragments/headerWrap :: headerWrap-mobile}"></div>
+			<div th:replace="~{fragments/selectWrap :: selectWrap}"></div>
+			<div th:replace="~{fragments/selectWrap :: selectWrap-mobile}"></div>
+
+		</div>
+		<div class="l-wrapper">
+			<div class="l-details-wrap">
+				<div class="l-left-menu-wrap">
+					<div class="l-page-title">my account</div>
+					<div class="bread-crumb">
+						home / <span>dashboard</span>
+					</div>
+					<div class="account-menu">
+						<ul>
+							<li><a class="dash" href="dashboard.html">dashboard</a></li>
+							<li><a class="detail" href="details.html">my details</a></li>
+							<li><a class="history" href="b-history.html">book
+									history</a></li>
+							<li><a class="wish" href="wish.html">wishlist</a></li>
+							<li><a class="plan" href="plan.html">best offers for you</a></li>
+							<li><a class="event" href="noevents.html">events</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="l-right-detials-wrap">
+					<div class="l-right-title">member name's bookshelf</div>
+					<div class="l-right-box-wrap">
+						<div class="cart-title">you bag has 0 books</div>
+						<div class="sorry">Oops ! Looks like your bag is empty !
+							Browse through our well curated collection of books and start
+							reading !</div>
+						<div class="l-btn">
+							<form action="#">
+								<input type="submit" value="browse books" class="button">
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div th:replace="~{fragments/footer :: testimonialFragment}"></div>
+		<div th:replace="~{fragments/footer :: footer}"></div>
+		<div th:replace="~{fragments/footer :: footer-mobile}"></div>
+
+	</div>
+
+</body>
+</html>

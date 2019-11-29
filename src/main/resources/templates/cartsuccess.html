@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/cartheadpart :: cartheadPart}"></head>
+<body>
+	<div class="sucess-msg-wrap">
+		<div class="succes-msg-in-wrap">
+			<div class="succes-msg">Your order is processed successfully</div>
+			<div class="succes-msg-details">
+				The order details will be mailed to your registered email address.<br />
+				Stay connected !
+			</div>
+			<div class="space">&nbsp;</div>
+			<div class="success-order-btns">
+				<a th:href="@{/dashboard}" value="Dashboard" class="sbutton">Dashboard</a>
+				<a th:href="@{/quickSearch}" value="Browse books" class="sbutton">Browse
+					books</a> <a th:href="@{/logout}" value="Logout" class="sbutton">Logout</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

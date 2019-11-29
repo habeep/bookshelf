@@ -1,0 +1,16 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/headpart_1 :: headPart_1}"></head>
+<body>
+	<div class="error-page">
+		<div>sorry</div>
+		<div class="error-page-msg">Looks like something went wrong on
+			our end</div>
+		<div class="go-back">
+			<div class="go-back-button">
+				<a th:href="@{/}">Go back</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

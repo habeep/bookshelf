@@ -1,0 +1,58 @@
+
+
+<div class="sticky-padding" th:fragment="selectSearch">
+	<a th:href="@{/}"> <img th:src="@{/images/logo-s.png}" /></a>
+	<form th:action="@{/selectSearch}" method="post" class="form-signin">
+				<div class="styled-select">
+					<select name="readingLevelList" >
+					<option value="-1">Reading Level</option>
+					<option th:each="dropDownItem : ${readingLevels}"
+                             th:value="${dropDownItem.readingLevelId}"
+                             th:text="${dropDownItem.readingLevel}"/>
+						
+					</select>
+				</div>
+				 <div class="styled-select">
+					<select name="categoriesList">
+					<option  value="-1">Categories</option>
+						<option th:each="dropDownItem : ${categories}"
+                             th:value="${dropDownItem.categoryId}"
+                             th:text="${dropDownItem.categoryName}"/>
+					</select>
+				</div>
+				<div class="styled-select">
+					<select name="languageList">
+					<option  value="-1">Languages</option>
+						<option th:each="dropDownItem : ${languages}"
+                             th:value="${dropDownItem.languageID}"
+                             th:text="${dropDownItem.language}"/>
+					</select>
+				</div>
+				<div class="styled-select">
+					<select name="publishersList">
+					<option value="-1">Publishers LIST</option>
+						<option th:each="dropDownItem : ${publishers}"
+                             th:value="${dropDownItem.publisherId}"
+                             th:text="${dropDownItem.publisherName}"/>
+					</select>
+				</div> 
+				<button type="submit" class="selectButton" style="border:none;"></button>
+				
+				</form>
+	<div class="menu-480">
+		<i class="fas fa-bars"></i>
+	</div>
+	<div class="open-menu">
+		<ul>
+			<li><a th:href="@{/howitworks}">how it works</a></li>
+			<li><a th:href="@{/pricing}">pricing</a></li>
+			<li><a th:href="@{/signup}">signup</a></li>
+			<li><a th:href="@{/login}">login</a></li>
+		</ul>
+	</div>
+	<div class="cart-full">
+		<i class="fas fa-shipping-fast"></i>
+	</div>
+</div>
+
+

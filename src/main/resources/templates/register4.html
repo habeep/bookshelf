@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragments/headpart_1 :: headPart_1}"></head>
+
+<body>
+	<div class="main-wrapper">
+		<div class="wrapper">
+			<div th:replace="~{fragments/headerWrap :: headerWrap}" />
+			<div th:replace="~{fragments/headerWrap :: headerWrap-mobile}" />
+			<div th:replace="~{fragments/selectWrap :: selectWrap}" />
+		</div>
+		<div th:replace="~{fragments/selectWrap :: selectWrap-mobile}" />
+
+		<div class="l-wrapper">
+			<div class="l-details-wrap">
+				<div th:replace="~{fragments/leftNav :: leftNav}"></div>
+				<div class="l-right-detials-wrap">
+					<div class="l-right-title2">CHOOSE A PLAN</div>
+					<div class="l-right-box-wrap">
+						<div class="l-box-text">Number of children in your household</div>
+						<div class="radio-wrap">
+							<label> 1 <input type="radio" name="number" /> <span
+								class="checkmark"></span></label> <label>2 <input type="radio"
+								name="number"> <span class="checkmark"></span></label> <label>3
+								<input type="radio" name="number"> <span
+									class="checkmark"></span>
+							</label> <label>4 <input type="radio" name="number" /> <span
+								class="checkmark"></span></label>
+						</div>
+						<div class="l-box-text">Your child's / children's reading
+							level</div>
+						<div class="checkbox-wrap">
+
+							<th:block th:each="certificate : ${readingLevels}">
+								<label> <span th:text="${certificate.readingLevel}" />
+									<input type="checkbox" name="readingLevel"
+									th:value="${certificate.readingLevelId}" /> <span
+									class="checkmark"></span>
+
+								</label>
+							</th:block>
+
+
+						</div>
+						<div class="l-box-text">Number of books per delivery</div>
+						<div class="radio-wrap">
+							<th:block th:each="certificate : ${subscriptions}">
+								<label> <span th:text="${certificate.subscriptionName}" />
+									<input type="radio" name="noOfBooksRadio"
+									th:value="${certificate.subcId}" /> <span class="checkmark"></span>
+								</label>
+						</div>
+						<div class="starred-msg">*maximum of 3 free deliveries in a
+							month</div>
+						<div class="l-box-text">choose your plan</div>
+						<div class="radio-wrap">
+
+							<th:block th:each="certificate : ${subscriptionsMonths}">
+								<label><span
+									th:text="${certificate.noofMonths} + ' Months' " /> <input
+									type="radio" name="noOfMonthsRadio"
+									th:value="${certificate.subcId}" /> <span class="checkmark"></span>
+								</label>
+						</div>
+						<div class="l-box-s">
+							<span>PRICING FOR THIS PLAN is Rs.1800/-</span>
+						</div>
+						<div class="checkbox-wrap">
+							<label> I have read and I accept the <a href="terms.html">terms
+									and conditions</a> <input type="checkbox"> <span
+									class="checkmark"></span></label>
+						</div>
+						<div class="l-btn">
+							<form action="register4.html">
+								<input type="submit" value="SUBSCRIBE" class="button">
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div th:replace="~{fragments/footer :: testimonialFragment}"></div>
+		<div th:replace="~{fragments/footer :: footer}"></div>
+		<div th:replace="~{fragments/footer :: footer-mobile}"></div>
+
+	</div>
+
+</body>
+</html>

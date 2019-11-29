@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/headpartwithSelect :: headPartwithSelect}"></head>
+<body>
+	<div class="main-wrapper">
+		<div class="wrapper">
+			<div th:replace="~{fragments/headerWrap :: headerWrap}" />
+			<div th:replace="~{fragments/headerWrap :: headerWrap-mobile}" />
+			<div th:replace="~{fragments/selectWrap :: selectWrap}" />
+		</div>
+		<div th:replace="~{fragments/selectWrap :: selectWrap-mobile}" />
+		<div class="b-wrapper">
+
+			<!-- newly added - pricing -->
+			<div class="price-wrap">
+
+				<div class="sorry2">
+					<span th:utext="${redirectMsg}" class="arrow-box-normal"></span>
+				</div>
+				<div class="space">&nbsp;</div>
+
+				<!-- <form autocomplete="off"   action="#" th:action="@{/subscribeMe}"
+					method="post" role="form"> -->
+					<div class="text-msg">
+						<center>
+							<h2>
+								<span th:utext="${addToPricingStatus}"></span>
+							</h2>
+						</center>
+					</div>
+					<div class="price-desc">
+						<div class="price-desc-left">
+							<div>pick your plan.</div>
+						</div>
+						<div class="price-desc-right">
+							<span>Design your plan</span> based on the number of books you
+							want to read. With <span>zero registration charges and
+								free deliveries,</span> our plans are simple and efficient.
+						</div>
+					</div>
+					<div class="price-opt">
+					
+					<div>
+				 <form th:id="nl-form" class="nl-form" action="#" th:action="@{/subscribeMe}"
+					method="post" role="form">	
+				 <input type="hidden" name="payOption" id="payOption" value="1" />
+					<input type="hidden" name="subcId" id="subcId" value="0" />
+					
+									
+					<select id="noOfBooksRadio" name="noOfBooksRadio">
+						<option th:each="certificate : ${subscriptions}" th:value="${certificate.maxNumberofDelivery}+ ',' + ${certificate.maxNumberofBooks}" th:text="${certificate.maxNumberofBooks} + ' per delivery' " />  
+						
+						<!-- <option value="2">2 books per delivery</option>
+						<option value="3">4 books per delivery</option> -->
+					</select>
+					<select id="noOfMonthsRadio" name="noOfMonthsRadio">
+						<option th:each="certificate : ${subscriptionsMonths}" th:value="${certificate.noofMonths}" th:text="${certificate.subscriptionDescription} + ' - ' + ${certificate.noofMonths} + ' -  month plan' "  />
+						
+					</select>					
+				<!--  </form>  -->
+			</div>
+			
+						<!-- <section class="form">
+
+						<p hidden>This paragraph should be hidden</p>
+						<fieldset class="radio-container">
+							<div class="radio-options">
+								<div class="toggle">Choose number of books</div>
+								<input type="hidden" name="subcId" id="subcId" value="0" /> <input
+									type="hidden" name="payOption" id="payOption" value="1" />
+								<ul>
+									<li th:each="certificate : ${subscriptions}"><input
+										type="radio" id="noOfBooksRadio" name="noOfBooksRadio"
+										th:value="${certificate.maxNumberofDelivery}+ ',' + ${certificate.maxNumberofBooks}" /> <label
+										for="choice1"><span
+											th:utext="${certificate.maxNumberofBooks}" /> books per
+											delivery<br><span>maximum of <span
+													th:utext="${certificate.maxNumberofBooks}*${certificate.maxNumberofDelivery}" /> books in a
+													month
+											</span></label></li>
+
+								</ul>
+							</div>
+						</fieldset>
+
+						</section>
+						<section class="form">
+
+						<fieldset class="radio-container">
+							<div class="radio-options">
+								<div class="toggle">Choose plan</div>
+								<ul>
+									<li th:each="certificate : ${subscriptionsMonths}"><input
+										type="radio" id="noOfMonthsRadio" name="noOfMonthsRadio"
+										th:value="${certificate.noofMonths}" /> <label for="choice1"><span
+											th:utext="${certificate.noofMonths}" /> month plan<br><span
+												th:utext="${certificate.subscriptionDescription}" /></label></li>
+
+								</ul>
+							</div>
+						</fieldset>
+
+						</section> -->
+						
+<div class="member-charges">
+						Membership charges for this plan is <span id="subcAmount">0</span>
+					</div>
+					<div class="member-benefits">
+						<ul>
+							<li id="totalBooks">0 books</li>
+							<li id="totalDeliveries">0 free deliveries</li>
+							<li>0 registration charges</li>
+							<li>0 deposit</li>
+						</ul>
+					</div>
+					<div class="member-subscribe"
+						th:if="${userSubscribedFlag == 0 OR userId != -1}">
+
+						<input type="button" value="Subscribe to this plan" class="member-button"
+							onClick="javascript:document.getElementById('paymentOptionsDiv').style.display='block';" />
+						<!-- <input type="submit" value="Pay by Cash" class="member-button"
+							onClick="javascript:document.getElementById('payOption').value=0;" />
+ -->
+					</div>
+					<div class="cash-card-wrap" id="paymentOptionsDiv" style="display:none;">
+						<div class="cash-arrow-box">
+							<div class="radio-cash">
+								<label> <input type="radio" class="option-input radio"
+									name="payOptionRadio" checked onClick="javascript:document.getElementById('payOption').value=1;" /> Pay online
+								</label>
+								<div class="cash-card-msg">You will be redirected to
+									Instamojo payment gateway</div>
+							</div>
+							<div class="radio-cash">
+								<label> <input type="radio" class="option-input radio"
+									name="payOptionRadio" onClick="javascript:document.getElementById('payOption').value=0;" /> Pay by cash
+								</label>
+								<div class="cash-card-msg">If you are choosing this
+									option, you should ideally be having a member from our team
+									present in your premises to collect cash. If you are looking to
+									connect to an executive to collect cash, please reach out to us
+									at 8056073602</div>
+							</div>
+							<div class="cash-btn">
+								<input type="submit" value="Confirm & proceed" class="sbutton"/>
+							</div>
+						</div>
+					</div>
+					</form>						
+					</div>
+					
+			</div>
+
+			
+
+			<!-- </form> -->
+		</div>
+
+		<!-- newly added pricing ends -->
+
+	</div>
+
+
+	<div th:replace="~{fragments/footer :: testimonialFragment}"></div>
+	<div th:replace="~{fragments/footer :: footer}"></div>
+	<div th:replace="~{fragments/footer :: footer-mobile}"></div>
+	<!-- newly added - footer-mobile ends-->
+	<div class="m-foot-cart">
+		<i class="fas fa-shopping-bag"></i>
+	</div>
+	
+	
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/headpart_1 :: headPart_1}"></head>
+<body>
+	<div class="main-wrapper">
+		<div class="wrapper">
+			<div th:replace="~{fragments/headerWrap :: headerWrap}"></div>
+			<div th:replace="~{fragments/selectWrap :: selectWrap}"></div>
+		</div>
+		<div class="l-wrapper">
+			<div class="l-details-wrap">
+				<div th:replace="~{fragments/leftNav :: leftNav}"></div>
+				<div class="l-right-detials-wrap">
+					<div class="text-msgg" >
+			<span th:utext="${paymentMsg}" class="arrow-box-normal"></span>Payment Order Number is : <span th:utext="${payment_id}" class="arrow-box-normal"></span> </div>
+			<div class="space">&nbsp;</div>
+			
+					<div class="l-right-box-wrap">
+						<div class="offer-item" th:each="uscObj:${usc}">
+							<div class="b-history-book-details" ><label th:utext="${uscObj[0]}"></label>, <label th:utext="${uscObj[1]}"></label>
+								books per delivery</div>
+							<div class="b-history-book-status">valid till <label th:utext="${#dates.format(uscObj[2], 'dd-MMM-yyyy')}"></label></div>
+						</div>
+						
+						<div class="space">&nbsp;</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div th:replace="~{fragments/footer :: testimonialFragment}"></div>
+		<div th:replace="~{fragments/footer :: footer}"></div>
+		<div th:replace="~{fragments/footer :: footer-mobile}"></div>
+
+	</div>
+
+</body>
+</html>

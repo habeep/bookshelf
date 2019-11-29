@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragments/dashboardheadpart :: dashboardheadPart}"></head>
+<body>
+	<div class="main-wrapper">
+		<div class="wrapper">
+			<div th:replace="~{fragments/headerWrap :: headerWrap}" />
+			<div th:replace="~{fragments/headerWrap :: headerWrap-mobile}" />
+			<div th:replace="~{fragments/selectWrap :: selectWrap}" />
+		</div>
+		<div th:replace="~{fragments/selectWrap :: selectWrap-mobile}" />
+		<div class="l-wrapper">
+			<div class="l-details-wrap">
+				<div th:replace="~{fragments/leftNav :: leftNav}"></div>
+				<div class="l-right-detials-wrap">
+					<div class="l-right-title">book rented history</div>
+					<div class="l-right-box-wrap">
+						<div class="b-history-wrap">
+							<form autocomplete="off" action="#" th:action="@{/rentalhistory}"
+								method="post">
+								<div class="styled-select">
+									<select name="month" id="month" onchange="this.form.submit();">
+										<option value="1" th:selected="${selectedmonth == 1}">January</option>
+										<option value="2" th:selected="${selectedmonth == 2}">February</option>
+										<option value="3" th:selected="${selectedmonth == 3}">March</option>
+										<option value="4" th:selected="${selectedmonth == 4}">April</option>
+										<option value="5" th:selected="${selectedmonth == 5}">May</option>
+										<option value="6" th:selected="${selectedmonth == 6}">June</option>
+										<option value="7" th:selected="${selectedmonth == 7}">July</option>
+										<option value="8" th:selected="${selectedmonth == 8}">August</option>
+										<option value="9" th:selected="${selectedmonth == 9}">September</option>
+										<option value="10" th:selected="${selectedmonth == 10}">October</option>
+										<option value="11" th:selected="${selectedmonth == 11}">November</option>
+										<option value="12" th:selected="${selectedmonth == 12}">December</option>
+									</select>
+								</div>
+								<div class="styled-select">
+									<select name="year" id="year" onchange="this.form.submit();">
+										<option th:value="${year}"
+											th:selected="${selectedyear == year}"><span
+												th:utext="${year}"></span></option>
+										<option th:value="${nextYear}"
+											th:selected="${selectedyear == nextYear}"><span
+												th:utext="${nextYear}"></span></option>
+									</select>
+								</div>
+							</form>
+						</div>
+						<div th:if="${!books.empty}">
+							<div class="b-history-row">
+								<div class="b-history-item" th:each="book : ${books}">
+									<div class="b-history-book-image">
+										<a th:href="@{/bookdetails/}+${book[0]}"><img
+											th:src="@{'/bookimages/'+${book[6]}+'.jpg'}" /></a>
+									</div>
+									<div class="b-history-book-details-wrap">
+									
+									<div class="b-history-book-details">
+										<span th:text="${book[1]}"> Title </span>, <span
+											th:text="${book[5]}"> Language </span>, <span
+											th:text="${book[3]}"> Author </span>, <span
+											th:text="${book[2]}"> Title </span>
+									</div>
+									<div class="b-history-book-status">
+										Borrowed on <span th:text="${#dates.format(book[12], 'dd/MM/yyyy')}"> Requested on </span>
+									</div>
+									<div class="b-history-book-status2">
+										<span th:if="${book[11] == 0 }"> Not Returned </span><span
+											th:if="${book[11] == 1 }"> Returned </span>
+									</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- <div class="l-btn2">
+							<form action="#">
+								<input type="submit" value="previous month" class="button" >
+							</form>
+						</div>
+						<div class="l-btn3">
+							<form action="#">
+								<input type="submit" value="next month" class="button">
+							</form>
+						</div>
+						-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div th:replace="~{fragments/footer :: testimonialFragment}"></div>
+		<div th:replace="~{fragments/footer :: footer}"></div>
+		<div th:replace="~{fragments/footer :: footer-mobile}"></div>
+
+	</div>
+
+</body>
+</html>

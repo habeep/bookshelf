@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/headpart_1 :: headPart_1}"></head>
+
+<body>
+	<div class="main-wrapper">
+		<div class="wrapper">
+			<div th:replace="~{fragments/headerWrap :: headerWrap}" />
+			<div th:replace="~{fragments/headerWrap :: headerWrap-mobile}" />
+			<div th:replace="~{fragments/selectWrap :: selectWrap}" />
+
+		</div>
+		<div th:replace="~{fragments/selectWrap :: selectWrap-mobile}" />
+		<div class="b-wrapper">
+			<div class="book-wrap">
+				<div class="book" th:each="book : ${books}">
+					<div class="book-image">
+
+						<a th:href="@{/bookdetails/}+${book[0]}"><img
+							th:src="@{${'/bookimages/' + book[5] + '.jpg'}}"
+							th:altSrc="@{/images/no-image.jpg}" /></a>
+
+						<!-- <a th:href="@{/bookdetails/}+${book[0]}"><img
+							th:src="@{'/bookimages/'+${book[5]}+'.jpg'}"
+							altSrc="@{/images/no-image.jpg}" th:alt="@{/images/no-image.jpg}" /></a> -->
+					</div>
+					<div class="book-details">
+						<div class="book-title-wrap">
+							<div class="book-title">
+								<span th:text="${book[1]}"> Title </span>
+							</div>
+							<div class="book-age">
+								<span th:text="${book[6]}"> Fluent readers 8 + </span>, <span
+									th:text="${book[8]}"> Language </span>
+							</div>
+							<div class="book-author">
+								written by <span th:text="${book[3]}"> </span>
+							</div>
+							<div class="book-rent-wrap">
+								<div class="book-publisher">
+									<span th:text="${book[2]}">Publisher</span>
+								</div>
+
+								<div class="book-rent" id="rentDiv">
+									<a
+										th:onclick="'javascript:addBookToCart(\'' + ${book[0]} + '\');'"><img
+										th:src="@{/images/rent.png}" /></a>
+								</div>
+								<!-- <div class="book-rent">
+									<a th:href="@{'/user/books/' + ${book[0]}}"><img
+										th:src="@{/images/rent.png}" /></a>
+								</div> -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<div th:if=${books.empty} class="testimonial-name">
+					<center>
+						<div class="no-result-img">
+							<img th:src="@{/images/no-book.png}" />
+						</div>
+						<div class="no-result-des">Sorry we couldn’t locate the book
+							you are looking for.</div>
+					</center>
+
+				</div>
+			</div>
+		</div>
+		<div th:if="${user !=null}" sec:authorize="isAuthenticated()">
+			<div class="cart-add-msg">
+				<a th:href="@{/cart/}"><i class="fas fa-shopping-bag"><div
+							class="cart-number" id="cart-number3" name="cart-number3">
+							<span th:text="${userbookcartsize}"></span>
+						</div></i></a>
+			</div>
+			<!-- <div class="m-foot-cart"><i class="fas fa-shopping-bag"></i></div> -->
+		</div>
+		<div th:replace="~{fragments/footer :: testimonialFragment}"></div>
+		<div th:replace="~{fragments/footer :: footer}"></div>
+		<div th:replace="~{fragments/footer :: footer-mobile}"></div>
+	</div>
+</body>
+</html>
+

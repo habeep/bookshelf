@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/headpartIndex :: headPartIndex}"></head>
+<body>
+	<div class="main-wrapper">
+	
+		<div th:replace="~{fragments/header :: header}"/>
+		<div th:replace="~{fragments/mobileheader :: header-mobile}"/>
+		<!-- <div class="text-msg"><center><h2><span   th:utext="${addToCartStatus}" ></span></h2></center></div> -->
+		<div class="b-wrapper">
+			<div class="book-wrap">
+			
+				<div class="book" th:each="book : ${books}">
+					<div class="book-image">
+			
+						<a th:href="@{/bookdetails/}+${book[2]}"><img  th:src="@{${'/bookimages/' + book[4] + '.jpg'}}" altSrc="@{/images/no-image.jpg}" th:alt="'/bookimages/'+${book[4]}+'.jpg'"   /></a>                     
+					</div>
+					<div class="book-details">
+						<div class="book-title-wrap">
+							<div class="book-title" th:if="*{book[3]!=null and #strings.length(book[3])>60}"><span th:text="${#strings.substring(book[3],0,60)+'...'}"> Title </span></div>
+							<div class="book-title" th:if="*{book[3]!=null and #strings.length(book[3])<60}"><span th:text="${book[3]}"> Title </span></div>
+							
+							<div class="book-age"><span th:text="${book[5]}"> age </span>, [[${book[7]}]]</div>
+							<div class="book-author">written by <span th:text="${book[0]}"> Author </span></div>
+							<div class="book-rent-wrap">
+								<div class="book-publisher"><span th:text="${book[1]}"> Publisher </span></div>
+								<div class="book-rent" >
+									<!-- <a th:href="@{'/user/books/' + ${book[2]}}"><img th:src="@{/images/rent.png}" /></a> -->
+									<a th:onclick="'javascript:addBookToCart(\'' + ${book[2]} + '\');'"><img
+										th:src="@{/images/rent.png}" /></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>	
+		<div th:if="${user !=null}" sec:authorize="isAuthenticated()">
+		<div class="cart-add-msg"><a th:href="@{/cart/}"><i class="fas fa-shopping-bag"><div class="cart-number" id="cart-number3" name=""><span  th:text="${userbookcartsize}"></span></div></i></a></div>
+		<!-- <div class="m-foot-cart"><i class="fas fa-shopping-bag"></i></div> -->
+		</div>
+		<div th:replace="~{fragments/footer :: testimonialFragment}"></div>
+		<div th:replace="~{fragments/footer :: footer}"></div>
+		<!-- <div th:replace="~{fragments/footer :: footer-mobile}"></div> -->
+	</div>
+	
+				
+</body>
+</html>

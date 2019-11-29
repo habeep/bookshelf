@@ -1,0 +1,59 @@
+    <div class="wrapper" th:fragment="header">
+			<div class="logo">
+				<a th:href="@{/}"><img th:src="@{/images/logo.png}" /></a>
+			</div>
+			<input type="hidden" id="noImageLoc" name="noImageLoc" th:value="@{/images/no-image.jpg}"/>
+		
+			<div class="menu-mascot-wrapper">
+				<div class="main-page-menu">
+					<div class="long-menu">
+						<ul>
+							<li sec:authorize="!isAuthenticated()"><a th:href="@{/howitworks}">how it works</a></li>
+							<li  sec:authorize="!isAuthenticated()"><a th:href="@{/pricing}">pricing</a></li>
+							<li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">Signin</a></li>
+							<li sec:authorize="isAuthenticated()"><a th:href="@{/cart/}">Mybag<span  th:text="${userbookcartsize}" class="cart-number2"  id="cart-number2" >0</span></a></li>
+							<li sec:authorize="isAuthenticated()"><a th:href="@{/dashboard}">DashBoard</a></li>
+							<li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">login</a></li>
+							<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">logout</a></li>
+						</ul>
+					</div>
+					<div class="search-wrap">
+					 <form th:action="@{/search}" method="post" >
+						<div class="search">
+							<input type="text" class="searchTerm" name="searchStr" id="searchStr"
+								placeholder="search for your favorite book">
+								<button type="submit" class="searchButton"></button>
+						</div>
+						</form>
+					</div>
+					<div class="text-below-search">or click on the icons to see a
+						lot of books</div>
+					<div class="icon-wrap">
+						<div class="iconc">
+							<a th:href="@{/quickReadingLevelSearch/1}" > <img th:src="@{/images/menu-icon1.png}" /></a>
+						</div>
+						<div class="iconc">
+							<a th:href="@{/quickReadingLevelSearch/2}" ><img th:src="@{/images/menu-icon2.png}" /></a>
+						</div>
+						<div class="iconc">
+							<a th:href="@{/quickReadingLevelSearch/3}" ><img th:src="@{/images/menu-icon3.png}" /></a>
+						</div>
+						<div class="iconc">
+							<a th:href="@{/quickCategorySearch/3}" ><img th:src="@{/images/menu-icon4.png}" /></a>
+						</div>
+						<div class="iconc">
+							<a th:href="@{/quickCategorySearch/7}" ><img th:src="@{/images/menu-icon5.png}" /></a>
+						</div>
+					</div>
+				</div>
+				<div class="mascot-wrap">
+					<div class="mascot">
+						<img th:src="@{/images/mascot.png}" />
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+    

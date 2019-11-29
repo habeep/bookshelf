@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/headpart_1 :: headPart_1}"></head>
+<body>
+	<div class="main-wrapper">
+		<div class="wrapper">
+			<div th:replace="~{fragments/headerWrap :: headerWrap}" />
+			<div th:replace="~{fragments/headerWrap :: headerWrap-mobile}" />
+			<div th:replace="~{fragments/selectWrap :: selectWrap}" />
+		</div>
+		<div th:replace="~{fragments/selectWrap :: selectWrap-mobile}" />
+		<div class="l-wrapper">
+			<div class="l-details-wrap">
+				<div class="l-left-menu-wrap">
+					<div class="l-page-title">my account</div>
+					<div class="bread-crumb">
+						home / <span>create account</span>
+					</div>
+					<div class="register-steps">
+						<ul>
+							<li class="inactive"><span class="inactive">1</span>create
+								account</li>
+							<li class="inactive"><span class="inactive">2</span>delivery
+								area</li>
+							<li class="active"><span class="active">3</span>your details</li>
+							<li class="inactive"><span class="inactive">4</span>choose plan</li>
+						</ul>
+					</div>
+				</div>
+				<div class="l-right-detials-wrap">
+
+					<div class="l-right-title">MEMBER DETAILS</div>
+					<div class="l-right-box-wrap">
+						<form autocomplete="off" action="#" th:action="@{/register3}"
+							th:object="${user}" method="post" class="form-horizontal"
+							role="form" onsubmit="javascript:return checkTerms();">
+							<div class="l-box">
+								<input autofocus="autofocus" type="text" th:field="*{name}"
+									placeholder="NAME" class="form-control" /> <input
+									type="hidden" th:field="*{id}" class="form-control" />
+
+								<div class="error-msg-wrap" th:if="${#fields.hasErrors('name')}">
+									<div class="arrow-box">
+										<i class="fas fa-exclamation-triangle"></i> <label
+											th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+											class="validation-message"></label>
+									</div>
+								</div>
+
+							</div>
+
+
+
+							<div class="l-box">
+
+								<input autofocus="autofocus" type="text"
+									th:field="*{houseNumber}" placeholder="HOUSE NUMBER / NAME " />
+
+								<div class="error-msg-wrap"
+									th:if="${#fields.hasErrors('houseNumber')}">
+									<div class="arrow-box">
+										<i class="fas fa-exclamation-triangle"></i> <label
+											th:errors="*{houseNumber}" class="validation-message"></label>
+									</div>
+								</div>
+							</div>
+							<div class="l-box">
+
+								<input autofocus="autofocus" type="text" th:field="*{street}"
+									placeholder="STREET / BUILDING" />
+								<div class="error-msg-wrap"
+									th:if="${#fields.hasErrors('street')}">
+									<div class="arrow-box">
+										<i class="fas fa-exclamation-triangle"></i> <label
+											th:errors="*{street}" class="validation-message"></label>
+									</div>
+								</div>
+							</div>
+							<div class="l-box">
+
+								<input autofocus="autofocus" type="text" placeholder="LOCALITY"
+									th:field="*{locality}" />
+								<div class="error-msg-wrap"
+									th:if="${#fields.hasErrors('locality')}">
+									<div class="arrow-box">
+										<i class="fas fa-exclamation-triangle"></i> <label
+											th:errors="*{locality}" class="validation-message"></label>
+									</div>
+								</div>
+							</div>
+							<div class="l-box">
+
+								<input autofocus="autofocus" type="text" placeholder="CITY"
+									th:field="*{city}" />
+								<div class="error-msg-wrap" th:if="${#fields.hasErrors('city')}">
+									<div class="arrow-box">
+										<i class="fas fa-exclamation-triangle"></i> <label
+											th:errors="*{city}" class="validation-message"></label>
+									</div>
+								</div>
+							</div>
+							<div class="l-box">
+
+								<input autofocus="autofocus" type="text" placeholder="LANDMARK"
+									th:field="*{landmark}" />
+								<div class="error-msg-wrap"
+									th:if="${#fields.hasErrors('landmark')}">
+									<div class="arrow-box">
+										<i class="fas fa-exclamation-triangle"></i> <label
+											th:errors="*{landmark}" class="validation-message"></label>
+									</div>
+								</div>
+							</div>
+							<div class="l-box">
+
+
+								<input autofocus="autofocus" type="text" placeholder="PINCODE"
+									th:field="*{pincode}" />
+								<div class="error-msg-wrap"
+									th:if="${#fields.hasErrors('pincode')}">
+									<div class="arrow-box">
+										<i class="fas fa-exclamation-triangle"></i> <label
+											th:errors="*{pincode}" class="validation-message"></label>
+									</div>
+								</div>
+							</div>
+							<div class="l-box">
+
+								<input autofocus="autofocus" type="text"
+									placeholder="YOUR PHONE NUMBER" th:field="*{phoneNumber}" />
+								<div class="error-msg-wrap"
+									th:if="${#fields.hasErrors('phoneNumber')}">
+									<div class="arrow-box">
+										<i class="fas fa-exclamation-triangle"></i> <label
+											th:errors="*{phoneNumber}" class="validation-message"></label>
+									</div>
+								</div>
+							</div>
+							<div class="checkbox-wrap">
+							<label> I have read and I accept the <a th:href="@{/terms}" target="_blank">terms and conditions</a>
+							
+								<input type="checkbox" name="vehicle" th:value="'1'"
+									th:field="*{flag}" />
+									<span class="checkmark"></span>
+							</label>
+							</div>
+							<div class="l-btn">
+
+								<input type="submit" value="PROCEED" class="button" />
+
+							</div>
+						</form>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div th:replace="~{fragments/footer :: testimonialFragment}"></div>
+		<div th:replace="~{fragments/footer :: footer}"></div>
+		<div th:replace="~{fragments/footer :: footer-mobile}"></div>
+
+	</div>
+
+</body>
+</html>

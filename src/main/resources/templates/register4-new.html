@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Bookshelf - library for children</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="kid's library, library, books, books for children, best books to read">
+	<meta name="author" content="kid's library, library, books, books for children, best books to read">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" href="styles/inner.css">
+    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/screen.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/F159CE61-EE3D-1D42-A2C2-0E2254ADCC64/main.js" charset="UTF-8"></script></head>
+<body>
+<div class="main-wrapper">
+  <div class="wrapper">
+    <div class="header-wrap">
+      <div class="logo"><a href="index.html"><img src="images/logo.png" /></a></div>
+      <div class="header-right-wrap">
+        <div class="search-wrap">
+          <div class="search">
+            <input type="text" class="searchTerm" placeholder="search for your favorite book" />
+            <button type="submit" class="searchButton"> </button>
+          </div>
+        </div>
+        <div class="long-menu">
+          <ul>
+            <li><a href="dashboard.html">dashboard</a></li>
+            <li><a href="myaccount.html">my account</a></li>
+            <li><a href="logout.html">logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- newly added - header mobile -->
+    <div class="header-wrap-mobile">
+      <!-- hamburger -->
+      <div class="menu-480"><i class="fas fa-bars"></i></div>
+      <div class="open-menu">
+        <ul>
+          <li><a class="home" href="#">home</a></li>
+          <li><a class="dash" href="#">dashboard</a></li>
+          <li><a class="detail" href="#">edit my account</a></li>
+          <li><a class="cartmenu" href="#">my cart</a></li>
+          <li><a class="history" href="#">my book history</a></li>
+          <li><a class="plan" href="#">my plan</a></li>
+          <li><a class="wish" href="#">wishlist</a></li>
+          <li><a class="event" href="#">events</a></li>
+          <li><a class="contacts" href="#">contacts</a></li>
+          <li><a class="logout" href="#">logout</a></li>
+        </ul>
+      </div>
+      <!-- logo for mobile -->
+      <div class="mobile-logo"><img src="images/m-logo.png" /></div>
+      <!-- search expandable -->
+      <div class="search-expand">
+        <div id="wrap">
+          <form action="" autocomplete="on">
+            <input id="search" name="search" type="text" />
+            <input id="search_submit" value="Rechercher" type="submit" />
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- newly added - header-mobile ends -->
+    <div class="select-wrap">
+      <div class="styled-select">
+        <select name="select">
+          <option>reading level</option>
+          <option>early readers 3+</option>
+          <option>young readers 5+</option>
+          <option>fluent readers 7+</option>
+        </select>
+      </div>
+      <div class="styled-select">
+        <select name="select">
+          <option>categories</option>
+          <option>fiction</option>
+          <option>picture books</option>
+          <option>epics & classics</option>
+        </select>
+      </div>
+      <div class="styled-select">
+        <select name="select">
+          <option>langauge</option>
+          <option>english</option>
+          <option>hindi</option>
+          <option>tamil</option>
+        </select>
+      </div>
+      <div class="styled-select">
+        <select name="select">
+          <option>publishers</option>
+          <option>amarchitra katha</option>
+          <option>pratham</option>
+          <option>tulika</option>
+          <option>scholastic</option>
+        </select>
+      </div>
+      <div class="selectButton"></div>
+      <div class="selectButton-responsive"> <img src="images/view-books.png" /></div>
+    </div>
+  </div>
+  <!-- newly added - mobile tabs -->
+  <div class="mobile-tabs">
+    <div class="m-tab1"><a href="#">early readers</a></div>
+    <div class="m-tab"><a href="#">young readers</a></div>
+    <div class="m-tab"><a href="#">fluent readers</a></div>
+  </div><!-- newly added - mobile tabs ends -->
+<div class="l-wrapper">
+<div class="l-details-wrap">
+<div class="l-left-menu-wrap">
+<div class="l-page-title">my account</div>
+<div class="bread-crumb">home / <span>create account</span></div>
+<div class="register-steps">
+<ul>
+<li class="inactive"><span class="inactive">1</span>create account</li>
+<li class="inactive"><span class="inactive">2</span>delivery area</li>
+<li class="inactive"><span class="inactive">3</span>your details</li>
+<li class="active"><span class="active">4</span>choose plan</li>
+</ul>
+</div>
+</div>
+<div class="l-right-detials-wrap">
+<div class="l-right-title2">CHOOSE YOUR PLAN</div>
+<div class="l-right-box-wrap">
+<div class="price-opt">
+<section class="form">
+	<form>
+		<fieldset class="radio-container">
+			<div class="radio-options">
+				<div class="toggle">Choose number of books</div>
+				<ul>
+					<li>
+						<input type="radio" id="choice1" value="choice1">
+						<label for="choice1">2 books per delivery<br><span>maximum of 6 books in a month</span></label>
+                       	</li>
+					<li>
+						<input type="radio" id="choice2" value="choice2">
+						<label  for="choice2">3 books per delivery<br><span>maximum of 9 books in a month</span></label>
+					</li>
+					<li>
+						<input type="radio" id="choice3" value="choice3">
+						<label for="choice3">4 books per delivery<br><span>maximum of 12 books in a month</span></label>
+					</li>
+				</ul>	
+			</div>
+            </fieldset>         
+	</form>
+</section>
+<section class="form">
+	<form>
+		<fieldset class="radio-container">
+			<div class="radio-options">
+				<div class="toggle">Choose plan</div>
+								<ul>
+					<li>
+						<input type="radio" id="choice1" value="choice1">
+						<label for="choice1">6 month plan<br><span>starter plan</span></label>
+                       	</li>
+					<li>
+						<input type="radio" id="choice2" value="choice2">
+						<label  for="choice2">12 month plan<br><span>smarter plan</span></label>
+					</li>
+					</ul>		
+			</div>
+            </fieldset>         
+	</form>
+</section>
+</div>
+
+<div class="member-charges2">Membership charges for this plan is <span>1440/-</span></div>
+<div class="checkbox-wrap">
+<label> I have read and I accept the <a href="terms.html" target="_blank">terms and conditions</a>
+	<input type="checkbox">
+	<span class="checkmark"></span>
+</label>
+</div>
+<div class="l-btn"><form action="register4.html"><input type="submit" value="SUBSCRIBE" class="button"></form></div>
+</div>
+</div>
+</div>
+</div>
+<div class="testimonial-wrap">
+<div class="testimonial">If you don’t like to read, you haven’t found the right book.</div>
+<div class="testimonial-name">J.K.Rowling</div>
+</div>
+<div class="footer-wrap">
+<div class="footer-text-wrap">
+<div class="footer-logo"><a href="index.html"><img src="images/logo.png" /></a></div>
+<div class="footer-block1">
+<div class="footer-heading">Explore</div>
+<div class="footer-text">
+<ul>
+<li><a href="how-it-works.html">how it works</a></li>
+<li><a href="pricing.html">pricing plans</a></li>
+<li><a href="signup.html">new user signup</a></li>
+<li><a href="login.html">login</a></li>
+<li><a href="contact.html">contact</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-block2">
+<div class="footer-heading">Books</div>
+<div class="footer-text">
+<ul>
+<li><a href="how-it-works.html">early readers</a></li>
+<li><a href="pricing.html">young readers</a></li>
+<li><a href="signup.html">fluent readers</a></li>
+<li><a href="login.html">educational</a></li>
+<li><a href="contact.html">comics</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-block3">
+<div class="footer-heading">Good Reads</div>
+<div class="footer-text">
+<ul>
+<li><a href="how-it-works.html">top 100 books</a></li>
+<li><a href="pricing.html">cbse recommended</a></li>
+<li><a href="signup.html">top 50 classics</a></li>
+<li><a href="login.html">indian authors</a></li>
+<li><a href="contact.html">all time read list</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-block-last">
+<div class="footer-text">
+<ul>
+<li><a href="how-it-works.html">connect with us on facebook</a></li>
+<li><a href="how-it-works.html">info@bookshelf-library.com</a></li>
+<li>9884409372</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- newly added - footer-mobile starts-->
+<div class="footer-mobile">
+    <div class="m-foot-tab"><a class="searchfooter" href="#">search</a></div>
+    <div class="m-foot-tab"><a class="dash" href="#">dashboard</a></div>
+    <div class="m-foot-tab"><a class="logout" href="#">logout</a></div>
+    <div class="m-foot-tab">&nbsp;</div>
+    <div class="m-foot-tab">&nbsp;</div>
+</div><!-- newly added - footer-mobile ends-->
+    <div class="m-foot-cart"><i class="fas fa-shopping-bag"></i></div>
+</div>
+</body>
+</html>
